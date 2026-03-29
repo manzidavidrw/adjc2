@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #F5FAF0;
+    color: #1A3A0A;
+    overflow-x: hidden;
+  }
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #0D1F05; }
+  ::-webkit-scrollbar-thumb { background: #D42B2B; border-radius: 4px; }
+  ::selection { background: #D42B2B; color: #fff; }
+}
+
+@layer components {
+
+  /* ─── CURSOR ─── */
+  .cursor {
+    position: fixed; width: 12px; height: 12px;
+    background: #D42B2B; border-radius: 50%;
+    pointer-events: none; z-index: 9999;
+    left: -20px; top: -20px;
+    transition: transform .12s ease, width .2s, height .2s;
+    mix-blend-mode: normal;
+  }
+  .cursor-ring {
+    position: fixed; width: 40px; height: 40px;
+    border: 1.5px solid rgba(212,43,43,.5); border-radius: 50%;
+    pointer-events: none; z-index: 9998;
+    left: -20px; top: -20px;
+    transition: all .3s cubic-bezier(.16,1,.3,1);
+  }
+  body:hover .cursor { transform: scale(1); }
+
+  /* ─── WRITING MODE ─── */
+  .writing-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+  }
+
+  /* ─── GRID LINES ─── */
+  .grid-lines {
+    background-image:
+      linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+
+  /* ─── TICKER ─── */
+  .ticker-track { overflow: hidden; }
+  .ticker-inner { display: flex; width: max-content; animation: ticker 40s linear infinite; }
+
+  /* ─── SCROLL REVEAL ─── */
+  .reveal        { opacity: 0; transform: translateY(32px);  transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+  .reveal-left   { opacity: 0; transform: translateX(-32px); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+  .reveal-right  { opacity: 0; transform: translateX(32px);  transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+  .reveal-scale  { opacity: 0; transform: scale(.96);        transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+  .reveal.in, .reveal-left.in, .reveal-right.in, .reveal-scale.in { opacity: 1; transform: none; }
+  .d1{transition-delay:.05s} .d2{transition-delay:.12s} .d3{transition-delay:.19s}
+  .d4{transition-delay:.26s} .d5{transition-delay:.33s} .d6{transition-delay:.40s}
+
+  /* ─── NAV LINK ─── */
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
+    height: 2px; background: #D42B2B;
+    transform: scaleX(0); transform-origin: left; transition: transform .3s ease;
+  }
+  .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+
+  /* ─── PROGRAM CARD ─── */
+  .prog-card {
+    position: relative; overflow: hidden;
+    transition: transform .35s ease, box-shadow .35s ease;
+  }
+  .prog-card::after {
+    content: ''; position: absolute; left: 0; bottom: 0; top: 0;
+    width: 3px; background: #D42B2B;
+    transform: scaleY(0); transform-origin: bottom; transition: transform .35s ease;
+  }
+  .prog-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(26,58,10,0.18); }
+  .prog-card:hover::after { transform: scaleY(1); }
+
+  /* ─── STAT CARD ─── */
+  .stat-card { transition: transform .3s ease, box-shadow .3s ease; }
+  .stat-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(212,43,43,0.15); }
+
+  /* ─── TEAM CARD ─── */
+  .team-card { overflow: hidden; }
+  .team-card .team-overlay {
+    transform: translateY(100%); transition: transform .4s cubic-bezier(.16,1,.3,1);
+  }
+  .team-card:hover .team-overlay { transform: translateY(0); }
+  .team-card img-area { transition: transform .5s ease; }
+  .team-card:hover .team-img-inner { transform: scale(1.05); }
+
+  /* ─── TESTIMONIAL ─── */
+  .test-card { transition: transform .3s ease, box-shadow .3s ease; }
+  .test-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(26,58,10,0.12); }
+
+  /* ─── NEWS CARD ─── */
+  .news-card { transition: transform .35s ease, box-shadow .35s ease; }
+  .news-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(26,58,10,0.16); }
+  .news-card .news-img-inner { transition: transform .5s ease; }
+  .news-card:hover .news-img-inner { transform: scale(1.06); }
+
+  /* ─── GALLERY ─── */
+  .gal-item { overflow: hidden; }
+  .gal-item .gal-img { transition: transform .5s ease; }
+  .gal-item .gal-overlay { opacity: 0; transition: opacity .3s ease; }
+  .gal-item:hover .gal-img { transform: scale(1.07); }
+  .gal-item:hover .gal-overlay { opacity: 1; }
+
+  /* ─── AMT BUTTON ─── */
+  .amt-btn { transition: all .2s ease; }
+  .amt-btn.active, .amt-btn:hover {
+    background: #D42B2B; border-color: #D42B2B; color: #fff;
+  }
+
+  /* ─── INPUTS ─── */
+  .form-input:focus { border-color: #D42B2B; box-shadow: 0 0 0 3px rgba(212,43,43,.12); }
+
+  /* ─── DIAGONAL DIVIDER ─── */
+  .diagonal-top    { clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 100%); margin-top: -2rem; padding-top: 5rem; }
+  .diagonal-bottom { clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%); padding-bottom: 5rem; }
+}
