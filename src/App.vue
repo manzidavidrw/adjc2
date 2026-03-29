@@ -51,7 +51,7 @@ import WhatWeDoPage from '../src/components/whatwedopage.vue'
 import SubProgramPage from '../src/pages/Subprogrampage.vue'
 import SafiPadsPage from '../src/pages/SafiPadsPage.vue'
 import BlogNewsPage from '../src/pages/BlogNewsPage.vue'
-import BlogPostPage from '../src/pages/BlogPostPage.vue'
+import BlogPostPage from '../src/pages/Blogpostpage.vue'
 
 // ── State ─────────────────────────────────────────────────────────────────────
 const mobOpen = ref(false)
