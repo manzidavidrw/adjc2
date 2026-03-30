@@ -1,5 +1,5 @@
 <template>
-  <section id="programs" class="bg-navy-mist py-28">
+  <section id="programs" class="bg-navy-mist py-10">
     <div class="max-w-[1280px] mx-auto px-8">
 
       <!-- Header -->
@@ -8,7 +8,7 @@
           <div class="flex items-center gap-3 mb-4">
             <span class="w-7 h-[2px] bg-red flex-shrink-0"></span>
             <span class="text-red font-body text-[.65rem] font-semibold tracking-[3px] uppercase">{{ t('progEye')
-              }}</span>
+            }}</span>
           </div>
           <h2 class="font-display font-bold text-navy leading-[1.1]" style="font-size:clamp(2.2rem,3.5vw,3rem)">
             {{ t('progTitle') }}
@@ -23,7 +23,7 @@
           :class="'d' + (i + 1)">
           <!-- Number -->
           <div class="font-display font-bold text-[3.5rem] text-navy/[.06] leading-none mb-5">{{
-            String(i + 1).padStart(2,'0') }}</div>
+            String(i + 1).padStart(2, '0') }}</div>
           <!-- Icon -->
           <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl mb-5"
             :class="i % 2 === 0 ? 'bg-navy text-white' : 'bg-red text-white'">

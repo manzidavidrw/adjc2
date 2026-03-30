@@ -152,10 +152,10 @@ const TR = {
     teamTitle: 'Notre Équipe',
     teamSub: 'Des professionnels passionnés, unis par une vision commune du développement de la jeunesse congolaise.',
     team: [
-      { ini: 'JK', name: 'Jean-Pierre Kabila', role: 'Directeur Exécutif', bio: "Expert en développement communautaire avec 20 ans d'expérience en RDC et en Afrique subsaharienne." },
-      { ini: 'MC', name: 'Marie-Cé Nzuzi', role: 'Dir. des Programmes', bio: "Spécialiste en éducation et formation professionnelle. Coordinatrice des programmes phares depuis 2015." },
-      { ini: 'PL', name: 'Patrick Lumumba', role: 'Responsable Terrain', bio: "Coordinateur de nos 12 antennes provinciales, garant de la qualité et de l'impact sur le terrain." },
-      { ini: 'AK', name: 'Amina Kasongo', role: 'Communication', bio: "Journaliste engagée, elle donne une voix aux histoires des jeunes que nous accompagnons chaque jour." },
+      { ini: 'JK', name: 'Nondo Rugira Christian', role: 'Directeur Exécutif', bio: "Expert en développement communautaire avec 20 ans d'expérience en RDC et en Afrique subsaharienne." },
+      { ini: 'MC', name: 'Mugisha Justin Kabocho', role: 'Dir. des Programmes', bio: "Spécialiste en éducation et formation professionnelle. Coordinatrice des programmes phares depuis 2015." },
+      { ini: 'PL', name: 'Atete Solange', role: 'Responsable Terrain', bio: "Coordinateur de nos 12 antennes provinciales, garant de la qualité et de l'impact sur le terrain." },
+      { ini: 'AK', name: 'Ntumwa Binthi Jolie', role: 'Communication', bio: "Journaliste engagée, elle donne une voix aux histoires des jeunes que nous accompagnons chaque jour." },
     ],
 
     testEye: 'Témoignages',

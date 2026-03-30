@@ -20,21 +20,21 @@
         <div v-for="(member, i) in t('team')" :key="i"
           class="team-card reveal rounded-2xl overflow-hidden cursor-pointer" :class="'d' + (i + 1)">
           <!-- Portrait area -->
-          <div class="relative aspect-[3/4] flex items-end" :style="bgs[i]">
-            <div class="absolute inset-0 grid-lines opacity-30"></div>
-            <!-- Initials -->
-            <div
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display font-bold text-white/10 leading-none select-none"
-              style="font-size:5rem">
-              {{ member.ini }}
-            </div>
+          <div class="relative aspect-[3/4] flex items-end">
+
+            <!-- Real photo — object-top keeps face visible -->
+            <img :src="photos[i]" :alt="member.name" class="absolute inset-0 w-full h-full object-cover object-top" />
+
+            <!-- Gradient so text is always readable -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+
             <!-- Red accent bar -->
             <div class="absolute top-0 left-0 right-0 h-1 bg-red"></div>
-            <!-- Info overlay -->
-            <div class="relative z-10 w-full p-5 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+
+            <!-- Name / role / bio -->
+            <div class="relative z-10 w-full p-5">
               <p class="font-display font-bold text-white text-lg leading-tight">{{ member.name }}</p>
               <p class="text-red font-body text-[.62rem] tracking-[1.5px] uppercase mt-0.5">{{ member.role }}</p>
-              <!-- Bio slides up on hover -->
               <div class="team-overlay overflow-hidden">
                 <p class="text-white/60 font-body text-[.72rem] leading-[1.6] pt-3">{{ member.bio }}</p>
               </div>
@@ -48,12 +48,14 @@
 
 <script setup>
 import { useTranslations } from '../composables/useTranslations.js'
+
+import nondo from '../assets/team/nondo.jpg'
+import mugisha from '../assets/team/mugisha.jpg'
+import atete from '../assets/team/atete.jpg'
+import jolie from '../assets/team/jolie.jpg'
+
 const { t } = useTranslations()
 
-const bgs = [
-  'background: linear-gradient(160deg, #1A3A0A, #2E6012)',
-  'background: linear-gradient(160deg, #A81E1E, #1A3A0A)',
-  'background: linear-gradient(160deg, #234D0E, #1A3A0A)',
-  'background: linear-gradient(160deg, #D42B2B, #1A3A0A)',
-]
+// Must match the order of the team array in useTranslations
+const photos = [nondo, mugisha, atete, jolie]
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <section id="contact" class="bg-navy-mist py-28">
+  <section id="contact" class="bg-navy-mist py-10">
     <div class="max-w-[1280px] mx-auto px-8">
 
       <!-- Header -->
@@ -49,13 +49,13 @@
             <div class="grid grid-cols-2 gap-4">
               <div class="flex flex-col gap-1.5">
                 <label class="text-navy font-body font-semibold text-[.62rem] tracking-[2px] uppercase">{{ t('fFirst')
-                  }}</label>
+                }}</label>
                 <input type="text" :placeholder="t('fFirstPh')" v-model="form.first"
                   class="form-input px-4 py-3 border-[1.5px] border-navy/12 rounded-xl bg-snow font-body text-sm text-navy outline-none transition-all duration-200" />
               </div>
               <div class="flex flex-col gap-1.5">
                 <label class="text-navy font-body font-semibold text-[.62rem] tracking-[2px] uppercase">{{ t('fLast')
-                  }}</label>
+                }}</label>
                 <input type="text" :placeholder="t('fLastPh')" v-model="form.last"
                   class="form-input px-4 py-3 border-[1.5px] border-navy/12 rounded-xl bg-snow font-body text-sm text-navy outline-none transition-all duration-200" />
               </div>
@@ -64,7 +64,7 @@
             <!-- Email -->
             <div class="flex flex-col gap-1.5">
               <label class="text-navy font-body font-semibold text-[.62rem] tracking-[2px] uppercase">{{ t('fEmail')
-                }}</label>
+              }}</label>
               <input type="email" :placeholder="t('fEmailPh')" v-model="form.email"
                 class="form-input px-4 py-3 border-[1.5px] border-navy/12 rounded-xl bg-snow font-body text-sm text-navy outline-none transition-all duration-200" />
             </div>
@@ -72,7 +72,7 @@
             <!-- Subject -->
             <div class="flex flex-col gap-1.5">
               <label class="text-navy font-body font-semibold text-[.62rem] tracking-[2px] uppercase">{{ t('fSubj')
-                }}</label>
+              }}</label>
               <select v-model="form.subj"
                 class="form-input px-4 py-3 border-[1.5px] border-navy/12 rounded-xl bg-snow font-body text-sm text-navy outline-none transition-all duration-200">
                 <option v-for="opt in t('fOpts')" :key="opt" :value="opt">{{ opt }}</option>
@@ -82,7 +82,7 @@
             <!-- Message -->
             <div class="flex flex-col gap-1.5">
               <label class="text-navy font-body font-semibold text-[.62rem] tracking-[2px] uppercase">{{ t('fMsg')
-                }}</label>
+              }}</label>
               <textarea :placeholder="t('fMsgPh')" v-model="form.msg" rows="4"
                 class="form-input px-4 py-3 border-[1.5px] border-navy/12 rounded-xl bg-snow font-body text-sm text-navy outline-none transition-all duration-200 resize-y"></textarea>
             </div>

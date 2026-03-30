@@ -2,7 +2,7 @@
   <div class="who-we-are-page">
 
     <!-- ═══ HERO BANNER ═══ -->
-    <section class="relative bg-navy-dark min-h-[52vh] flex items-end overflow-hidden pt-[104px]">
+    <section class="relative bg-navy-dark min-h-[40vh] flex items-end overflow-hidden pt-[104px]">
       <div class="absolute inset-0 bg-hero-mesh"></div>
       <div class="absolute inset-0 grid-lines"></div>
       <!-- decorative vertical red line -->
@@ -12,7 +12,7 @@
         class="absolute right-0 bottom-0 font-display font-bold text-white/[.025] leading-none select-none pointer-events-none"
         style="font-size:28vw">ADJC</div>
 
-      <div class="relative max-w-[1280px] mx-auto px-8 pb-16 w-full">
+      <div class="relative max-w-[1280px] mx-auto px-8 pb-10 w-full">
         <!-- Breadcrumb -->
         <div class="flex items-center gap-2 mb-6">
           <button @click="$emit('navigate', 'home')"
@@ -21,7 +21,7 @@
           </button>
           <span class="text-white/20 text-xs">›</span>
           <span class="text-red font-body text-xs font-semibold">{{ lang === 'fr' ? 'Qui Sommes-Nous' : 'Who We Are'
-            }}</span>
+          }}</span>
         </div>
         <div class="flex items-center gap-3 mb-4">
           <span class="w-8 h-[2px] bg-red flex-shrink-0"></span>
@@ -43,78 +43,52 @@
     </section>
 
     <!-- ═══ INTRO — Our Story ═══ -->
-    <section id="ourstory" class="bg-white py-16">
+    <section id="ourstory" class="bg-white py-10">
       <div class="max-w-[1280px] mx-auto px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-16 items-center">
 
-          <!-- Visual side -->
-          <div class="reveal-left relative">
-            <div
-              class="aspect-[4/5] rounded-2xl overflow-hidden bg-gradient-to-br from-navy-light to-navy-dark relative flex items-end">
-              <div class="absolute inset-0 grid-lines opacity-40"></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <span class="text-white/[.06] font-display font-bold select-none" style="font-size:10rem">ADJC</span>
-              </div>
-              <div class="absolute top-0 left-0 right-0 h-1 bg-red"></div>
-              <div class="relative z-10 p-10">
-                <div class="w-8 h-[2px] bg-red mb-4"></div>
-                <p class="font-display text-white text-xl italic font-semibold leading-[1.45]">
-                  "{{ lang === 'fr'
-                    ? 'Une société juste, inclusive et résiliente où les jeunes participent pleinement au développement.'
-                    : 'A just, inclusive and resilient society where young people fully participate in development.' }}"
-                </p>
-                <p class="text-white/40 font-body text-xs tracking-[2px] uppercase mt-3 not-italic">— {{ lang === 'fr' ?
-                  'Notre Vision' : 'Our Vision' }}</p>
-              </div>
-            </div>
-            <!-- Floating stat card -->
-            <div class="absolute -bottom-6 -right-6 bg-red rounded-2xl px-6 py-5 shadow-red-lg z-10">
-              <div class="text-white/70 font-body text-[.58rem] tracking-[2px] uppercase mb-1">{{ lang === 'fr' ?
-                'Fondée' : 'Founded' }}</div>
-              <div class="font-display font-bold text-white text-3xl leading-none">2010</div>
-              <div class="text-white/60 font-body text-[.65rem] mt-1">Kinshasa, RDC</div>
+        <div class="reveal max-w-[860px]">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-7 h-[2px] bg-red flex-shrink-0"></span>
+            <span class="text-red font-body text-[.65rem] font-semibold tracking-[3px] uppercase">{{ lang === 'fr' ?
+              'Notre Organisation' : 'Our Organization' }}</span>
+            <!-- Small founded badge -->
+            <div class="ml-auto bg-red rounded-xl px-4 py-2 flex-shrink-0">
+              <div class="text-white/70 font-body text-[.55rem] tracking-[2px] uppercase leading-none mb-0.5">{{ lang
+                === 'fr' ? 'Fondée' : 'Founded' }}</div>
+              <div class="font-display font-bold text-white text-lg leading-none">2010 · Kinshasa</div>
             </div>
           </div>
-
-          <!-- Text side -->
-          <div class="reveal-right">
-            <div class="flex items-center gap-3 mb-5">
-              <span class="w-7 h-[2px] bg-red flex-shrink-0"></span>
-              <span class="text-red font-body text-[.65rem] font-semibold tracking-[3px] uppercase">{{ lang === 'fr' ?
-                'Notre Organisation' : 'Our Organization' }}</span>
-            </div>
-            <h2 class="font-display font-bold text-navy leading-[1.1] mb-6" style="font-size:clamp(2rem,3.2vw,2.8rem)">
-              {{ lang === 'fr' ? `Action Pour le Développement des Jeunes au Congo` : `Action for Youth Development in
-              Congo` }}
-            </h2>
-            <p class="text-navy/60 font-body font-light leading-[1.9] mb-5" style="font-size:.95rem">
-              {{ lang === 'fr'
-                ? `L'ADJC est une organisation de la société civile à but non lucratif, apolitique, légalement établie en
-              République Démocratique du Congo.Elle œuvre pour l'autonomisation des jeunes, la promotion des talents,
-              la défense des droits humains, l'égalité des genres et le développement durable à travers des actions
-              inclusives et communautaires alignées sur les Objectifs de Développement Durable(ODD).`
-                : `ADJC is a non-profit, non-political civil society organization, legally established in the Democratic
-              Republic of Congo.The organization works to empower youth, promote youth talents, advance human rights,
-              foster gender equality, and support sustainable development through inclusive, community - based actions
-              aligned with the Sustainable Development Goals (SDGs).` }}
-            </p>
-            <p class="text-navy/60 font-body font-light leading-[1.9]" style="font-size:.95rem">
-              {{ lang === 'fr'
-                ? `Grâce à des actions inclusives portées par les communautés, nous développons les compétences,
-              protégeons la dignité et créons des opportunités qui permettent aux jeunes et aux femmes de devenir des
-              acteurs de changement positif.`
-                : `Through inclusive, community-driven actions, we work to build skills, protect dignity, and create
-              opportunities that enable youth and women to become agents of positive change.` }}
-            </p>
-          </div>
+          <h2 class="font-display font-bold text-navy leading-[1.1] mb-5" style="font-size:clamp(2rem,3.2vw,2.8rem)">
+            {{ lang === 'fr' ? `Action Pour le Développement des Jeunes au Congo` : `Action for Youth Development in
+            Congo` }}
+          </h2>
+          <p class="text-navy/60 font-body font-light leading-[1.9] mb-4" style="font-size:.95rem">
+            {{ lang === 'fr'
+              ? `L'ADJC est une organisation de la société civile à but non lucratif, apolitique, légalement établie en
+            République Démocratique du Congo. Elle œuvre pour l'autonomisation des jeunes, la promotion des talents,
+            la défense des droits humains, l'égalité des genres et le développement durable à travers des actions
+            inclusives et communautaires alignées sur les Objectifs de Développement Durable (ODD).`
+              : `ADJC is a non-profit, non-political civil society organization, legally established in the Democratic
+            Republic of Congo. The organization works to empower youth, promote youth talents, advance human rights,
+            foster gender equality, and support sustainable development through inclusive, community-based actions
+            aligned with the Sustainable Development Goals (SDGs).` }}
+          </p>
+          <p class="text-navy/60 font-body font-light leading-[1.9]" style="font-size:.95rem">
+            {{ lang === 'fr'
+              ? `Grâce à des actions inclusives portées par les communautés, nous développons les compétences,
+            protégeons la dignité et créons des opportunités qui permettent aux jeunes et aux femmes de devenir des
+            acteurs de changement positif.`
+              : `Through inclusive, community-driven actions, we work to build skills, protect dignity, and create
+            opportunities that enable youth and women to become agents of positive change.` }}
+          </p>
         </div>
       </div>
     </section>
 
     <!-- ═══ MISSION & VISION ═══ -->
-    <section id="missionvision" class="bg-navy-mist py-16">
+    <section id="missionvision" class="bg-navy-mist py-10">
       <div class="max-w-[1280px] mx-auto px-8">
-        <div class="text-center mb-12 reveal">
+        <div class="text-center mb-8 reveal">
           <div class="flex items-center justify-center gap-3 mb-4">
             <span class="w-7 h-[2px] bg-red"></span>
             <span class="text-red font-body text-[.65rem] font-semibold tracking-[3px] uppercase">{{ lang === 'fr' ?
@@ -149,7 +123,7 @@
             <div class="absolute top-0 left-0 right-0 h-1 bg-white/30"></div>
             <div class="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center text-2xl mb-6">🌟</div>
             <h3 class="font-display font-bold text-white text-2xl mb-4">{{ lang === 'fr' ? 'Notre Vision' : 'Our Vision'
-              }}</h3>
+            }}</h3>
             <p class="text-white/75 font-body text-sm leading-[1.85]">
               {{ lang === 'fr'
                 ? `Une société juste, inclusive et résiliente où les jeunes participent pleinement au développement
@@ -165,7 +139,7 @@
     </section>
 
     <!-- ═══ OUR APPROACH ═══ -->
-    <section id="approach" class="bg-white py-16">
+    <section id="approach" class="bg-white py-10">
       <div class="max-w-[1280px] mx-auto px-8">
         <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 items-center">
           <!-- Icon block -->
@@ -207,9 +181,9 @@
     </section>
 
     <!-- ═══ VALUES ═══ -->
-    <section id="values" class="bg-navy-mist py-16">
+    <section id="values" class="bg-navy-mist py-10">
       <div class="max-w-[1280px] mx-auto px-8">
-        <div class="flex flex-wrap items-end justify-between gap-6 mb-10 reveal">
+        <div class="flex flex-wrap items-end justify-between gap-6 mb-7 reveal">
           <div>
             <div class="flex items-center gap-3 mb-4">
               <span class="w-7 h-[2px] bg-red flex-shrink-0"></span>
@@ -248,7 +222,7 @@
     </section>
 
     <!-- ═══ STATS STRIP ═══ -->
-    <section class="bg-navy py-12 relative overflow-hidden">
+    <section class="bg-navy py-8 relative overflow-hidden">
       <div class="absolute inset-0 grid-lines opacity-50"></div>
       <div class="relative max-w-[1280px] mx-auto px-8">
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -263,9 +237,9 @@
     </section>
 
     <!-- ═══ TEAM ═══ -->
-    <section id="ourteam" class="bg-white py-16">
+    <section id="ourteam" class="bg-white py-10">
       <div class="max-w-[1280px] mx-auto px-8">
-        <div class="text-center mb-10 reveal">
+        <div class="text-center mb-7 reveal">
           <div class="flex items-center justify-center gap-3 mb-4">
             <span class="w-7 h-[2px] bg-red"></span>
             <span class="text-red font-body text-[.65rem] font-semibold tracking-[3px] uppercase">{{ lang === 'fr' ?
@@ -289,7 +263,7 @@
               <div class="absolute top-0 left-0 right-0 h-1 bg-red"></div>
               <div class="absolute inset-0 flex items-center justify-center">
                 <span class="font-display font-bold text-white/10 select-none" style="font-size:5rem">{{ member.ini
-                  }}</span>
+                }}</span>
               </div>
               <div
                 class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-5">
@@ -306,7 +280,7 @@
     </section>
 
     <!-- ═══ CTA BAND ═══ -->
-    <section class="bg-red py-20 relative overflow-hidden">
+    <section class="bg-red py-12 relative overflow-hidden">
       <div class="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-white/[.05]"></div>
       <div class="absolute -bottom-16 -left-16 w-60 h-60 rounded-full bg-white/[.04]"></div>
       <div class="relative max-w-[1280px] mx-auto px-8 flex flex-col lg:flex-row items-center justify-between gap-8">
@@ -390,9 +364,9 @@ const stats = [
 ]
 
 const teamMembers = [
-  { ini: 'JK', name: 'Jean-Pierre Kabila', role: 'Directeur Exécutif / Executive Director', bio: "Expert en développement communautaire avec 20 ans d'expérience en RDC.", bg: 'background:linear-gradient(160deg,#1A3A0A,#2E6012)' },
-  { ini: 'MC', name: 'Marie-Cé Nzuzi', role: 'Dir. Programmes', bio: "Spécialiste en éducation et formation professionnelle depuis 2015.", bg: 'background:linear-gradient(160deg,#A81E1E,#1A3A0A)' },
-  { ini: 'PL', name: 'Patrick Lumumba', role: 'Responsable Terrain', bio: "Coordinateur de nos 12 antennes provinciales sur le terrain.", bg: 'background:linear-gradient(160deg,#234D0E,#1A3A0A)' },
-  { ini: 'AK', name: 'Amina Kasongo', role: 'Communication', bio: "Journaliste engagée donnant une voix aux jeunes que nous accompagnons.", bg: 'background:linear-gradient(160deg,#D42B2B,#1A3A0A)' },
+  { ini: 'JK', name: 'Nondo Rugira Christian', role: 'Directeur Exécutif / Executive Director', bio: "Expert en développement communautaire avec 20 ans d'expérience en RDC.", bg: 'background:linear-gradient(160deg,#1A3A0A,#2E6012)' },
+  { ini: 'MC', name: 'Mugisha Justin Kabocho', role: 'Dir. Programmes', bio: "Spécialiste en éducation et formation professionnelle depuis 2015.", bg: 'background:linear-gradient(160deg,#A81E1E,#1A3A0A)' },
+  { ini: 'PL', name: 'Atete Solange', role: 'Responsable Terrain', bio: "Coordinateur de nos 12 antennes provinciales sur le terrain.", bg: 'background:linear-gradient(160deg,#234D0E,#1A3A0A)' },
+  { ini: 'AK', name: 'Ntumwa Binthi Jolie', role: 'Communication', bio: "Journaliste engagée donnant une voix aux jeunes que nous accompagnons.", bg: 'background:linear-gradient(160deg,#D42B2B,#1A3A0A)' },
 ]
 </script>

@@ -229,6 +229,16 @@ import { ref, onMounted, watch } from 'vue'
 import { useTranslations } from '../composables/useTranslations.js'
 import { useReveal } from '../composables/useReveal.js'
 import { programs } from '../data/programData.js'
+import sexual from '../assets/sexual.jpg'
+import gbv from '../assets/gbv.jpg'
+import equality from '../assets/equality.jpg'
+import community from '../assets/community.jpg'
+import economic from '../assets/economic.jpg'
+import protection from '../assets/protection.jpg'
+import interp from '../assets/interp.jpg'
+import education from '../assets/education.jpg'
+import sewing from '../assets/sewing.jpg'
+import skills from '../assets/skills.jpeg'
 
 // ── Props / emits ────────────────────────────────────────────────────────────
 const props = defineProps({
@@ -305,29 +315,29 @@ function navigateToArea(slug) {
 
 // ── Photo map: one representative image per sub-program slug ─────────────────
 const AREA_PHOTOS = {
-  'srhr-education-adolescents': 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=75',
+  'srhr-education-adolescents': sexual,
   'srhr-menstrual-health': 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=75',
-  'srhr-gbv-prevention': 'https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=600&q=75',
+  'srhr-gbv-prevention': gbv,
   'srhr-health-services': 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=75',
-  'srhr-gender-equality': 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=75',
-  'srhr-community-engagement': 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=75',
-  'enterprise-training': 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=75',
-  'enterprise-talent': 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=75',
-  'enterprise-startup': 'https://images.unsplash.com/photo-1556761175-4b46a572b786?w=600&q=75',
+  'srhr-gender-equality': equality,
+  'srhr-community-engagement': community,
+  'enterprise-training': interp,
+  'enterprise-talent': sewing,
+  'enterprise-startup': skills,
   'enterprise-financial-literacy': 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=75',
   'enterprise-markets': 'https://images.unsplash.com/photo-1519995451813-39e29e054914?w=600&q=75',
-  'enterprise-inclusion': 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=75',
+  'enterprise-inclusion': economic,
   'peace-participation': 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&q=75',
   'peace-conflict-prevention': 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=75',
   'peace-civic-education': 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=75',
   'peace-extremism-prevention': 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=75',
   'peace-social-cohesion': 'https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=600&q=75',
   'peace-leadership': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=75',
-  'climate-education': 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&q=75',
+  'climate-education': education,
   'climate-adaptation': 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600&q=75',
   'climate-natural-resources': 'https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&q=75',
   'climate-green-skills': 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&q=75',
-  'climate-reforestation': 'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=600&q=75',
+  'climate-reforestation': protection,
   'climate-advocacy': 'https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=600&q=75',
   'research-participatory': 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&q=75',
   'research-evidence-advocacy': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=75',
