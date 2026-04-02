@@ -103,6 +103,13 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useTranslations } from '@/composables/useTranslations.js'
+import launch from '../assets/launching.jpeg'
+import five from '../assets/five.jpeg'
+import sake from '../assets/sake.jpeg'
+import hundred from '../assets/hundred.jpeg'
+import participate from '../assets/participate.jpeg'
+import froms from '../assets/from.jpeg'
+import people from '../assets/people.jpeg'
 
 const { t, lang } = useTranslations()
 const emit = defineEmits(['navigate'])
@@ -110,48 +117,68 @@ const emit = defineEmits(['navigate'])
 const slides = [
   {
     id: 1,
-    img: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1600&q=80',
-    date: '15 Mars 2026', readTime: 4,
-    author: 'Jean-Pierre Kabila', role: 'Directeur Exécutif',
-    catFr: 'Actualités', catEn: 'News',
-    titleFr: 'Lancement du Programme National de Bourses 2026 pour 500 Jeunes',
-    titleEn: '2026 National Scholarship Program Launched for 500 Youth',
-    excerptFr: "L'ADJC annonce son programme le plus ambitieux à ce jour — 500 bourses distribuées dans toutes les provinces de la RDC pour l'année scolaire 2026-2027.",
-    excerptEn: "ADJC announces its most ambitious program to date — 500 scholarships distributed across all provinces of the DRC for the 2026-2027 school year.",
+    img: launch,
+    date: '7 Nov 2025',
+    author: 'ADJC',
+    catFr: 'Blog',
+    catEn: 'Blog',
+    titleFr: "Étude sur les besoins des survivantes en RDC",
+    titleEn: "Study on survivors’ unmet needs in Eastern DRC",
+    excerptFr: "Une initiative à Goma pour améliorer la protection et le soutien aux survivantes.",
+    excerptEn: "An initiative in Goma to improve protection and support for survivors."
   },
+
   {
     id: 2,
-    img: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&q=80',
-    date: '8 Mars 2026', readTime: 3,
-    author: 'Amina Kasongo', role: 'Communication',
-    catFr: 'Événements', catEn: 'Events',
-    titleFr: 'Forum National de la Jeunesse — Kinshasa 2026 : Un Succès Retentissant',
-    titleEn: 'National Youth Forum — Kinshasa 2026: A Resounding Success',
-    excerptFr: "800 jeunes leaders réunis pour deux jours d'ateliers et d'échanges intenses sur l'avenir du Congo.",
-    excerptEn: "800 young leaders gathered for two days of intensive workshops and exchanges on the future of Congo.",
+    img: five,
+    date: '14 Nov 2025',
+    author: 'ADJC',
+    catFr: 'Formation',
+    catEn: 'Training',
+    titleFr: "Formation en santé sexuelle à Goma",
+    titleEn: "SRHR training strengthens civil society in Goma",
+    excerptFr: "Des acteurs formés au plaidoyer et au cadre légal en RDC.",
+    excerptEn: "Civil society trained on advocacy and legal frameworks in DRC."
   },
+
+  {
+    id: 3,
+    img: sake,
+    date: '3–5 Déc 2025',
+    author: 'ADJC',
+    catFr: 'Formation',
+    catEn: 'Training',
+    titleFr: "Atelier sur les droits des personnes handicapées",
+    titleEn: "Workshop on disability rights in Goma & Sake",
+    excerptFr: "Sensibilisation autour de la loi et de la résolution 2475.",
+    excerptEn: "Awareness on legal rights and UN Resolution 2475."
+  },
+
   {
     id: 4,
-    img: 'https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=1600&q=80',
-    date: '10 Fév 2026', readTime: 5,
-    author: 'Marie-Cé Nzuzi', role: 'Dir. Programmes',
-    catFr: 'Témoignages', catEn: 'Stories',
-    titleFr: "Bénédicte, de Bénéficiaire à Entrepreneuse : Son Parcours Inspirant",
-    titleEn: "Bénédicte, from Beneficiary to Entrepreneur: Her Inspiring Journey",
-    excerptFr: "À 24 ans, Bénédicte dirige une PME de transformation alimentaire qui emploie 12 personnes à Kinshasa.",
-    excerptEn: "At 24, Bénédicte now runs a food processing SME employing 12 people in Kinshasa.",
+    img: hundred,
+    date: '25 Nov – 10 Déc 2025',
+    author: 'ADJC',
+    catFr: 'Genre & Droits',
+    catEn: 'Gender & Rights',
+    titleFr: "Campagne contre le cyberharcèlement",
+    titleEn: "Campaign against cyber harassment in schools",
+    excerptFr: "Des centaines d’élèves mobilisés au Nord et Sud-Kivu.",
+    excerptEn: "Hundreds of students mobilised across Kivu provinces."
   },
+
   {
     id: 5,
-    img: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1600&q=80',
-    date: '28 Jan 2026', readTime: 6,
-    author: 'Patrick Lumumba', role: 'Responsable Terrain',
-    catFr: 'Blog', catEn: 'Blog',
-    titleFr: 'Jeunes Médiateurs de Paix : Leçons du Terrain à Minembwe',
-    titleEn: 'Young Peace Mediators: Lessons from the Field in Minembwe',
-    excerptFr: "Après 18 mois de formation, nos 32 jeunes médiateurs ont résolu 47 conflits — un taux de succès de 87%.",
-    excerptEn: "After 18 months of training, our 32 young mediators resolved 47 conflicts — an 87% success rate.",
-  },
+    img: participate,
+    date: '2025',
+    author: 'ADJC',
+    catFr: 'Protection',
+    catEn: 'Protection',
+    titleFr: "Conférence sur la protection de l’enfant",
+    titleEn: "Child protection training conference",
+    excerptFr: "Renforcement des capacités pour la sécurité des enfants.",
+    excerptEn: "Strengthening skills for child safety and protection."
+  }
 ]
 
 const activeSlide = ref(0)
