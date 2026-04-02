@@ -27,14 +27,18 @@
 
         <!-- Desktop mega-menu -->
         <div class="hidden lg:flex items-center h-full">
-          <div v-for="menu in menus" :key="menu.key" class="relative h-full flex items-center"
+          <div v-for="menu in menus" :key="menu.key" class="relative h-full flex items-center "
             @mouseenter="activeMenu = menu.key">
 
             <!-- Top-level label -->
             <button @click="navigate(menu.page, null)"
               class="flex items-center gap-1.5 h-full px-5 text-[.7rem] font-semibold tracking-[1px] uppercase font-body border-none bg-transparent cursor-pointer transition-colors duration-200"
-              :class="activeMenu === menu.key ? 'text-white' : 'text-white/60 hover:text-white'">
+              :class="activeMenu === menu.key
+                ? 'text-sky-600'
+                : 'text-sky-400 hover:text-sky-600'">
+
               {{ t(menu.label) }}
+
               <svg v-if="menu.subs.length" class="w-3 h-3 transition-transform duration-200"
                 :class="activeMenu === menu.key ? 'rotate-180' : ''" fill="none" viewBox="0 0 12 12">
                 <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
