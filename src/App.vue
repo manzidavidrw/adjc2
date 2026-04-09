@@ -15,13 +15,12 @@
     <main>
       <HeroSection @navigate="navigateTo" />
       <AboutSection />
-      <ProgramsSection />
+      <ProgramsSection @navigate="navigateTo" />
       <ImpactSection />
       <TeamSection />
-      <TestimonialsSection />
-      <NewsSection />
+      <PartnersSection />
+
       <GallerySection />
-      <DonateSection />
       <ContactSection />
     </main>
   </template>
@@ -40,10 +39,8 @@ import AboutSection from '../src/components/AboutSection.vue'
 import ProgramsSection from '../src/components/ProgramsSection.vue'
 import ImpactSection from '../src/components/ImpactSection.vue'
 import TeamSection from '../src/components/TeamSection.vue'
-import TestimonialsSection from '../src/components/TestimonialsSection.vue'
-import NewsSection from '../src/components/NewsSection.vue'
 import GallerySection from '../src/components/GallerySection.vue'
-import DonateSection from '../src/components/DonateSection.vue'
+import PartnersSection from '../src/components/PartnersSection.vue'
 import ContactSection from '../src/components/ContactSection.vue'
 import TheFooter from '../src/components/TheFooter.vue'
 import WhoWeArePage from '../src/components/whowearepage.vue'
@@ -61,7 +58,7 @@ const currentRouteParams = ref({})
 // Section anchors that live on the home page
 const HOME_ANCHORS = new Set([
   'home', 'about', 'programs', 'impact',
-  'team', 'news', 'gallery', 'donate', 'contact',
+  'team', 'partners', 'news', 'gallery', 'donate', 'contact',
 ])
 
 // ── Navigation ────────────────────────────────────────────────────────────────
@@ -69,20 +66,29 @@ const HOME_ANCHORS = new Set([
  * Central navigation handler used by all components via @navigate.
  *
  * @param {string} target - Route name or home-page anchor id
- * @param {object} params - Optional route params, e.g. { slug: 'srhr-gbv-prevention' }
+ * @param {object|string} params - Optional route params, e.g. { slug: 'srhr-gbv-prevention' } or anchor string
  */
 function navigateTo(target, params = {}) {
   mobOpen.value = false
+
+  let section = null
+  if (typeof params === 'string') {
+    section = params
+    params = { section }
+  } else if (params && typeof params === 'object' && 'section' in params) {
+    section = params.section
+  }
+
   currentRouteParams.value = params
 
   // Named sub-pages
   if (target === 'whoweare') {
     currentPage.value = 'whoweare'
-    currentRouteParams.value = { section: null }
+    currentRouteParams.value = { section }
     return
   }
   // About Us section anchors — go to whoweare page then scroll to section
-  const WHOWEARE_SECTIONS = new Set(['ourstory', 'missionvision', 'approach', 'values', 'ourteam'])
+  const WHOWEARE_SECTIONS = new Set(['ourstory', 'visionmission', 'approach', 'values', 'ourteam', 'partners'])
   if (WHOWEARE_SECTIONS.has(target)) {
     currentRouteParams.value = { section: target }
     if (currentPage.value === 'whoweare') {

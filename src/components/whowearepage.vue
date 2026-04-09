@@ -21,7 +21,7 @@
           </button>
           <span class="text-white/20 text-xs">›</span>
           <span class="text-red font-body text-xs font-semibold">{{ lang === 'fr' ? 'Qui Sommes-Nous' : 'Who We Are'
-          }}</span>
+            }}</span>
         </div>
         <div class="flex items-center gap-3 mb-4">
           <span class="w-8 h-[2px] bg-red flex-shrink-0"></span>
@@ -85,8 +85,8 @@
       </div>
     </section>
 
-    <!-- ═══ MISSION & VISION ═══ -->
-    <section id="missionvision" class="bg-navy-mist py-10">
+    <!-- ═══ VISION & MISSION ═══ -->
+    <section id="visionmission" class="bg-navy-mist py-10">
       <div class="max-w-[1280px] mx-auto px-8">
         <div class="text-center mb-8 reveal">
           <div class="flex items-center justify-center gap-3 mb-4">
@@ -96,7 +96,7 @@
             <span class="w-7 h-[2px] bg-red"></span>
           </div>
           <h2 class="font-display font-bold text-navy leading-[1.1]" style="font-size:clamp(2rem,3.2vw,2.8rem)">
-            {{ lang === 'fr' ? 'Mission & Vision' : 'Mission & Vision' }}
+            {{ lang === 'fr' ? 'Vision & Mission' : 'Vision & Mission' }}
           </h2>
         </div>
 
@@ -123,7 +123,7 @@
             <div class="absolute top-0 left-0 right-0 h-1 bg-white/30"></div>
             <div class="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center text-2xl mb-6">🌟</div>
             <h3 class="font-display font-bold text-white text-2xl mb-4">{{ lang === 'fr' ? 'Notre Vision' : 'Our Vision'
-            }}</h3>
+              }}</h3>
             <p class="text-white/75 font-body text-sm leading-[1.85]">
               {{ lang === 'fr'
                 ? `Une société juste, inclusive et résiliente où les jeunes participent pleinement au développement
@@ -237,40 +237,55 @@
     </section>
 
     <!-- ═══ TEAM ═══ -->
-    <section id="ourteam" class="bg-white py-10">
+    <!-- ═══ TEAM ═══ -->
+    <section id="ourteam" class="bg-white py-16">
       <div class="max-w-[1280px] mx-auto px-8">
-        <div class="text-center mb-7 reveal">
-          <div class="flex items-center justify-center gap-3 mb-4">
-            <span class="w-7 h-[2px] bg-red"></span>
-            <span class="text-red font-body text-[.65rem] font-semibold tracking-[3px] uppercase">{{ lang === 'fr' ?
-              'Les Personnes' : 'The People' }}</span>
-            <span class="w-7 h-[2px] bg-red"></span>
+
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12 reveal">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-7 h-[2px] bg-red flex-shrink-0"></span>
+              <span class="text-red font-body text-[.65rem] font-semibold tracking-[3px] uppercase">
+                {{ lang === 'fr' ? 'Les Personnes' : 'The People' }}
+              </span>
+            </div>
+            <h2 class="font-display font-bold text-navy leading-[1.1]" style="font-size:clamp(2rem,3.2vw,2.8rem)">
+              {{ lang === 'fr' ? 'Notre Équipe de Direction' : 'Our Leadership Team' }}
+            </h2>
           </div>
-          <h2 class="font-display font-bold text-navy leading-[1.1]" style="font-size:clamp(2rem,3.2vw,2.8rem)">
-            {{ lang === 'fr' ? 'Notre Équipe de Direction' : 'Our Leadership Team' }}
-          </h2>
-          <p class="text-navy/50 font-body font-light text-sm leading-relaxed max-w-[500px] mx-auto mt-4">
+          <p class="text-navy/45 font-body font-light text-sm leading-relaxed max-w-[380px]">
             {{ lang === 'fr'
               ? "Des professionnels engagés, unis autour d'une vision commune pour la jeunesse congolaise."
               : "Dedicated professionals united around a common vision for Congolese youth." }}
           </p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div v-for="(member, i) in teamMembers" :key="i" class="reveal group" :class="'d' + (i + 1)">
-            <div class="rounded-2xl overflow-hidden relative aspect-[3/4]" :style="member.bg">
-              <div class="absolute inset-0 grid-lines opacity-30"></div>
-              <div class="absolute top-0 left-0 right-0 h-1 bg-red"></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <span class="font-display font-bold text-white/10 select-none" style="font-size:5rem">{{ member.ini
-                }}</span>
-              </div>
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-5">
-                <p class="font-display font-bold text-white text-lg leading-tight">{{ member.name }}</p>
-                <p class="text-red font-body text-[.62rem] tracking-[1.5px] uppercase mt-0.5">{{ member.role }}</p>
-                <div class="overflow-hidden" style="max-height:0;transition:max-height .4s" ref="bioRef">
-                  <p class="text-white/55 font-body text-[.72rem] leading-[1.6] pt-2">{{ member.bio }}</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
+          <div v-for="(member, i) in t('team')" :key="i" class="reveal group" :class="'d' + (i + 1)">
+            <div
+              class="rounded-[2.5rem] overflow-hidden border border-slate-200/80 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.08)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_34px_100px_rgba(15,23,42,0.12)]">
+              <div class="relative h-[28rem] overflow-hidden bg-slate-950">
+                <img :src="photos[i]" :alt="member.name"
+                  class="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-110" />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent"></div>
+                <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <button type="button" @click.stop="toggleBio(i)"
+                    class="pointer-events-auto rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[1.2px] text-white/90 opacity-0 transition-all duration-300 group-hover:opacity-100 hover:bg-white/20">
+                    {{ selectedBio === i ? t('closeBio') : t('viewBio') }}
+                  </button>
+                </div>
+                <div class="absolute inset-x-6 bottom-6 rounded-3xl p-4 backdrop-blur-xl">
+                  <p class="font-display font-semibold text-white text-lg leading-tight">{{ member.name }}</p>
+                  <p class="mt-2 text-red font-body text-[.72rem] uppercase tracking-[1.3px]">{{ member.role }}</p>
+                </div>
+                <div
+                  class="absolute inset-0 bg-slate-950/95 p-6 flex flex-col justify-center items-center text-center transition-all duration-500"
+                  :class="selectedBio === i ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'">
+                  <p class="text-white/80 font-body text-sm leading-7 mb-6">{{ member.bio }}</p>
+                  <button type="button" @click.stop="toggleBio(i)"
+                    class="rounded-full bg-white text-navy font-semibold text-sm uppercase tracking-[1px] px-4 py-2 hover:bg-slate-200 transition-colors duration-200">
+                    {{ t('closeBio') }}
+                  </button>
                 </div>
               </div>
             </div>
@@ -307,20 +322,33 @@
       </div>
     </section>
 
+    <!-- ═══ PARTNERS ═══ -->
+    <PartnersSection />
+
   </div>
 </template>
 
 <script setup>
-import { onMounted, watch } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { useTranslations } from '@/composables/useTranslations.js'
 import { useReveal } from '@/composables/useReveal.js'
+import PartnersSection from './PartnersSection.vue'
+
+import nondo from '../assets/team/nondo.jpg'
+import mugisha from '../assets/team/mugisha.jpg'
+import atete from '../assets/team/atete.jpg'
+import jolie from '../assets/team/jolie.jpg'
 
 const props = defineProps({
   section: { type: String, default: null },
 })
 defineEmits(['navigate'])
 
-const { lang } = useTranslations()
+const { lang, t } = useTranslations()
+const selectedBio = ref(null)
+function toggleBio(index) {
+  selectedBio.value = selectedBio.value === index ? null : index
+}
 useReveal()
 
 // ── Scroll to a section by id with navbar offset ──────────────────────────
@@ -363,10 +391,5 @@ const stats = [
   { n: '98%', lFr: 'Taux de satisfaction', lEn: 'Satisfaction rate' },
 ]
 
-const teamMembers = [
-  { ini: 'JK', name: 'Nondo Rugira Christian', role: 'Directeur Exécutif / Executive Director', bio: "Expert en développement communautaire avec 20 ans d'expérience en RDC.", bg: 'background:linear-gradient(160deg,#1A3A0A,#2E6012)' },
-  { ini: 'MC', name: 'Mugisha Justin Kabocho', role: 'Dir. Programmes', bio: "Spécialiste en éducation et formation professionnelle depuis 2015.", bg: 'background:linear-gradient(160deg,#A81E1E,#1A3A0A)' },
-  { ini: 'PL', name: 'Atete Solange', role: 'Responsable Terrain', bio: "Coordinateur de nos 12 antennes provinciales sur le terrain.", bg: 'background:linear-gradient(160deg,#234D0E,#1A3A0A)' },
-  { ini: 'AK', name: 'Ntumwa Binthi Jolie', role: 'Communication', bio: "Journaliste engagée donnant une voix aux jeunes que nous accompagnons.", bg: 'background:linear-gradient(160deg,#D42B2B,#1A3A0A)' },
-]
+const photos = [nondo, mugisha, atete, jolie]
 </script>

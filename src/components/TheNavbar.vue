@@ -186,10 +186,11 @@ const menus = ref([
     key: 'about', label: 'menuAboutUs', desc: 'menuAboutUsDesc', ico: '🌍', page: 'whoweare',
     subs: [
       { navId: 'whoweare', anchor: 'our-story', ico: '📖', label: 'subOurStory', desc: 'subOurStoryDesc' },
-      { navId: 'whoweare', anchor: 'mission', ico: '🎯', label: 'subMissionVision', desc: 'subMissionVisionDesc' },
+      { navId: 'whoweare', anchor: 'visionmission', ico: '🎯', label: 'subMission', desc: 'subMissionDesc' },
       { navId: 'whoweare', anchor: 'approach', ico: '🧭', label: 'subApproach', desc: 'subApproachDesc' },
       { navId: 'whoweare', anchor: 'values', ico: '💎', label: 'subValues', desc: 'subValuesDesc' },
       { navId: 'whoweare', anchor: 'team', ico: '👥', label: 'subTeam', desc: 'subTeamDesc' },
+      { navId: 'whoweare', anchor: 'partners', ico: '🤝', label: 'subPartners', desc: 'subPartnersDesc' },
     ],
   },
   // 2. What We Do

@@ -8,7 +8,7 @@
           <div class="flex items-center gap-3 mb-4">
             <span class="w-7 h-[2px] bg-red flex-shrink-0"></span>
             <span class="text-red font-body text-[.65rem] font-semibold tracking-[3px] uppercase">{{ t('progEye')
-            }}</span>
+              }}</span>
           </div>
           <h2 class="font-display font-bold text-navy leading-[1.1]" style="font-size:clamp(2.2rem,3.5vw,3rem)">
             {{ t('progTitle') }}
@@ -20,7 +20,7 @@
       <!-- Programs grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div v-for="(prog, i) in t('progs')" :key="i" class="prog-card reveal bg-white rounded-2xl p-8 cursor-pointer"
-          :class="'d' + (i + 1)">
+          :class="'d' + (i + 1)" @click="$emit('navigate', prog.slug)">
           <!-- Number -->
           <div class="font-display font-bold text-[3.5rem] text-navy/[.06] leading-none mb-5">{{
             String(i + 1).padStart(2, '0') }}</div>
@@ -47,4 +47,5 @@
 <script setup>
 import { useTranslations } from '../composables/useTranslations.js'
 const { t } = useTranslations()
+const emit = defineEmits(['navigate'])
 </script>

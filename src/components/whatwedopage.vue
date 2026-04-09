@@ -144,10 +144,7 @@
                     class="absolute top-3 left-3 w-8 h-8 rounded-xl bg-white/90 backdrop-blur-sm flex items-center justify-center text-sm shadow-sm">
                     {{ area.ico }}
                   </div>
-                  <div
-                    class="absolute bottom-3 right-3 bg-red/90 text-white font-body text-[.58rem] font-semibold tracking-[1.5px] uppercase px-2 py-0.5 rounded-full">
-                    {{ lang === 'fr' ? prog.shortFr : prog.shortEn }}
-                  </div>
+
                 </div>
 
                 <!-- Text bottom -->
