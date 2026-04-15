@@ -236,6 +236,16 @@ import interp from '../assets/interp.jpg'
 import education from '../assets/education.jpg'
 import sewing from '../assets/sewing.jpg'
 import skills from '../assets/skills.jpeg'
+import sante from '../assets/sante.jpeg'
+import trainings from '../assets/trainings.jpeg'
+import financial from '../assets/financial.jpeg'
+import market from '../assets/market.jpeg'
+import paix from '../assets/paix.jpeg'
+import paix2 from '../assets/paix2.jpeg'
+import civic from '../assets/civic.jpeg'
+import prevention from '../assets/prevention.jpeg'
+import cohesion from '../assets/cohesion.jpeg'
+import leadership from '../assets/leadership.jpeg'
 
 // ── Props / emits ────────────────────────────────────────────────────────────
 const props = defineProps({
@@ -312,24 +322,24 @@ function navigateToArea(slug) {
 
 // ── Photo map: one representative image per sub-program slug ─────────────────
 const AREA_PHOTOS = {
-  'srhr-education-adolescents': sexual,
-  'srhr-menstrual-health': 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=75',
-  'srhr-gbv-prevention': gbv,
-  'srhr-health-services': 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=75',
+  'srhr-education-adolescents': gbv,
+  'srhr-menstrual-health': skills,
+  'srhr-gbv-prevention': sexual,
+  'srhr-health-services': sante,
   'srhr-gender-equality': equality,
   'srhr-community-engagement': community,
-  'enterprise-training': interp,
+  'enterprise-training': trainings,
   'enterprise-talent': sewing,
-  'enterprise-startup': skills,
-  'enterprise-financial-literacy': 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=75',
-  'enterprise-markets': 'https://images.unsplash.com/photo-1519995451813-39e29e054914?w=600&q=75',
+  'enterprise-startup': interp,
+  'enterprise-financial-literacy': financial,
+  'enterprise-markets': market,
   'enterprise-inclusion': economic,
-  'peace-participation': 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&q=75',
-  'peace-conflict-prevention': 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=75',
-  'peace-civic-education': 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=75',
-  'peace-extremism-prevention': 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=75',
-  'peace-social-cohesion': 'https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=600&q=75',
-  'peace-leadership': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=75',
+  'peace-participation': paix,
+  'peace-conflict-prevention': paix2,
+  'peace-civic-education': civic,
+  'peace-extremism-prevention': prevention,
+  'peace-social-cohesion': cohesion,
+  'peace-leadership': leadership,
   'climate-education': education,
   'climate-adaptation': 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600&q=75',
   'climate-natural-resources': 'https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&q=75',
