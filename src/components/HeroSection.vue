@@ -7,12 +7,24 @@
         i === activeSlide ? 'opacity-100 z-10' : 'opacity-0 z-0']">
 
         <!-- Real background image -->
-        <img :src="post.img" :alt="lang === 'fr' ? post.titleFr : post.titleEn"
-          class="absolute inset-0 w-full h-full object-cover" />
+        <div v-if="post.img" class="absolute inset-0">
+          <img :src="post.img" :alt="lang === 'fr' ? post.titleFr : post.titleEn"
+            class="absolute inset-0 w-full h-full object-cover object-center"
+            style="filter: none; image-rendering: auto;" />
+        </div>
+        <div v-else class="absolute inset-0 bg-gradient-to-br from-navy-dark via-red/20 to-navy-dark">
+          <!-- Default background with ADJC branding -->
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center text-white/10">
+              <div class="text-8xl font-display font-bold mb-4">ADJC</div>
+              <div class="text-2xl font-body">Association pour les Droits des Jeunes au Congo</div>
+            </div>
+          </div>
+        </div>
 
         <!-- Overlays -->
-        <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/20"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/60"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20"></div>
 
         <!-- Red accent line -->
         <div class="absolute left-0 top-[25%] bottom-[25%] w-[3px] bg-red"></div>
@@ -45,9 +57,15 @@
 
           <!-- CTA buttons -->
           <div class="flex items-center gap-3">
-            <button @click="goToPost(post)"
+            <button v-if="post.id !== 'default'" @click="goToPost(post)"
               class="inline-flex items-center gap-3 bg-red hover:bg-red-dark text-white font-body font-semibold text-sm tracking-wide px-7 py-3.5 rounded-xl border-none cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-red-lg">
               {{ lang === 'fr' ? "Lire l'article" : 'Read article' }}
+              <span
+                class="w-5 h-5 rounded-full border border-white/40 flex items-center justify-center text-[.6rem]">→</span>
+            </button>
+            <button v-else @click="goToBlog"
+              class="inline-flex items-center gap-3 bg-red hover:bg-red-dark text-white font-body font-semibold text-sm tracking-wide px-7 py-3.5 rounded-xl border-none cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-red-lg">
+              {{ lang === 'fr' ? "Voir nos actualités" : 'View our news' }}
               <span
                 class="w-5 h-5 rounded-full border border-white/40 flex items-center justify-center text-[.6rem]">→</span>
             </button>
@@ -101,99 +119,70 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { useTranslations } from '@/composables/useTranslations.js'
-import launch from '../assets/launching.jpeg'
-import five from '../assets/five.jpeg'
-import sake from '../assets/sake.jpeg'
-import hundred from '../assets/hundred.jpeg'
-import participate from '../assets/participate.jpeg'
-import froms from '../assets/from.jpeg'
-import people from '../assets/people.jpeg'
+import { useBlogPosts } from '../composables/useBlogPosts.js'
 
 const { t, lang } = useTranslations()
 const emit = defineEmits(['navigate'])
+const { posts, loading, fetchPosts } = useBlogPosts()
 
-const slides = [
-  {
-    id: 1,
-    img: launch,
-    date: '7 Nov 2025',
-    author: 'ADJC',
-    catFr: 'Blog',
-    catEn: 'Blog',
-    titleFr: "Étude sur les besoins des survivantes en RDC",
-    titleEn: "Study on survivors’ unmet needs in Eastern DRC",
-    excerptFr: "Une initiative à Goma pour améliorer la protection et le soutien aux survivantes.",
-    excerptEn: "An initiative in Goma to improve protection and support for survivors."
-  },
+const slides = computed(() => {
+  const blogSlides = posts.value
+    .filter(post => post.img) // Only show posts that have images
+    .slice(0, 5)
+    .map(post => ({
+      id: post.id,
+      img: post.img,
+      date: post.date,
+      author: post.author,
+      catFr: post.catFr,
+      catEn: post.catEn,
+      titleFr: post.titleFr,
+      titleEn: post.titleEn,
+      excerptFr: post.excerptFr,
+      excerptEn: post.excerptEn,
+      readTime: post.readTime
+    }))
 
-  {
-    id: 2,
-    img: five,
-    date: '14 Nov 2025',
-    author: 'ADJC',
-    catFr: 'Formation',
-    catEn: 'Training',
-    titleFr: "Formation en santé sexuelle à Goma",
-    titleEn: "SRHR training strengthens civil society in Goma",
-    excerptFr: "Des acteurs formés au plaidoyer et au cadre légal en RDC.",
-    excerptEn: "Civil society trained on advocacy and legal frameworks in DRC."
-  },
-
-  {
-    id: 3,
-    img: sake,
-    date: '3–5 Déc 2025',
-    author: 'ADJC',
-    catFr: 'Formation',
-    catEn: 'Training',
-    titleFr: "Atelier sur les droits des personnes handicapées",
-    titleEn: "Workshop on disability rights in Goma & Sake",
-    excerptFr: "Sensibilisation autour de la loi et de la résolution 2475.",
-    excerptEn: "Awareness on legal rights and UN Resolution 2475."
-  },
-
-  {
-    id: 4,
-    img: hundred,
-    date: '25 Nov – 10 Déc 2025',
-    author: 'ADJC',
-    catFr: 'Genre & Droits',
-    catEn: 'Gender & Rights',
-    titleFr: "Campagne contre le cyberharcèlement",
-    titleEn: "Campaign against cyber harassment in schools",
-    excerptFr: "Des centaines d’élèves mobilisés au Nord et Sud-Kivu.",
-    excerptEn: "Hundreds of students mobilised across Kivu provinces."
-  },
-
-  {
-    id: 5,
-    img: participate,
-    date: '2025',
-    author: 'ADJC',
-    catFr: 'Protection',
-    catEn: 'Protection',
-    titleFr: "Conférence sur la protection de l’enfant",
-    titleEn: "Child protection training conference",
-    excerptFr: "Renforcement des capacités pour la sécurité des enfants.",
-    excerptEn: "Strengthening skills for child safety and protection."
+  // If no blog posts with images, show a default slide
+  if (blogSlides.length === 0) {
+    return [{
+      id: 'default',
+      img: null, // Will use CSS background
+      date: '',
+      author: 'ADJC',
+      catFr: 'Bienvenue',
+      catEn: 'Welcome',
+      titleFr: 'Association pour les Droits des Jeunes au Congo',
+      titleEn: 'Association for Youth Rights in Congo',
+      excerptFr: 'Découvrez nos initiatives et programmes pour l\'émancipation des jeunes congolais.',
+      excerptEn: 'Discover our initiatives and programs for the empowerment of Congolese youth.',
+      readTime: 0
+    }]
   }
-]
+
+  return blogSlides
+})
 
 const activeSlide = ref(0)
 let timer = null
 
 function startAutoplay() {
-  timer = setInterval(() => { activeSlide.value = (activeSlide.value + 1) % slides.length }, 5000)
+  timer = setInterval(() => { activeSlide.value = (activeSlide.value + 1) % slides.value.length }, 5000)
 }
 function stopAutoplay() { if (timer) clearInterval(timer) }
-function nextSlide() { stopAutoplay(); activeSlide.value = (activeSlide.value + 1) % slides.length; startAutoplay() }
-function prevSlide() { stopAutoplay(); activeSlide.value = (activeSlide.value - 1 + slides.length) % slides.length; startAutoplay() }
+function nextSlide() { stopAutoplay(); activeSlide.value = (activeSlide.value + 1) % slides.value.length; startAutoplay() }
+function prevSlide() { stopAutoplay(); activeSlide.value = (activeSlide.value - 1 + slides.value.length) % slides.value.length; startAutoplay() }
 function goToSlide(i) { stopAutoplay(); activeSlide.value = i; startAutoplay() }
 function goToPost(post) { emit('navigate', 'blog-post', { postId: post.id }) }
 function goToBlog() { emit('navigate', 'blognews') }
 
-onMounted(startAutoplay)
+onMounted(async () => {
+  await fetchPosts()
+  if (slides.value.length > 0) {
+    startAutoplay()
+  }
+})
 onUnmounted(stopAutoplay)
 </script>

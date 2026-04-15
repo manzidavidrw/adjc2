@@ -84,6 +84,16 @@
             class="ml-4 bg-red hover:bg-red-dark text-white text-[.7rem] font-semibold tracking-[1px] uppercase px-5 py-2.5 rounded-lg border-none cursor-pointer transition-all duration-200 hover:-translate-y-px hover:shadow-red-lg font-body flex-shrink-0">
             {{ t('navDonate') }}
           </button>
+
+          <!-- Admin Login -->
+          <button @click="navigate('admin-login')"
+            class="ml-2 w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 flex items-center justify-center text-white/70 hover:text-white transition-all duration-200 cursor-pointer"
+            title="Admin Login">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+          </button>
         </div>
 
         <!-- Hamburger -->
@@ -137,9 +147,19 @@
         class="w-full bg-red hover:bg-red-dark text-white font-body font-semibold text-base py-4 rounded-xl border-none cursor-pointer transition-colors duration-200">
         {{ t('navDonate') }} →
       </button>
-      <div class="flex items-center justify-center gap-2 mt-5">
-        <button v-for="l in ['fr', 'en']" :key="l" @click="setLang(l)" :class="['text-xs font-semibold tracking-[2px] uppercase px-4 py-2 rounded-lg border-none cursor-pointer font-body transition-all duration-200',
-          lang === l ? 'bg-red text-white' : 'bg-white/[.06] text-white/40']">{{ l }}</button>
+      <div class="flex items-center justify-center gap-4 mt-5">
+        <button @click="navigate('admin-login'); $emit('toggleMob')"
+          class="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 flex items-center justify-center text-white/70 hover:text-white transition-all duration-200 cursor-pointer"
+          title="Admin Login">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+        </button>
+        <div class="flex items-center gap-2">
+          <button v-for="l in ['fr', 'en']" :key="l" @click="setLang(l)" :class="['text-xs font-semibold tracking-[2px] uppercase px-4 py-2 rounded-lg border-none cursor-pointer font-body transition-all duration-200',
+            lang === l ? 'bg-red text-white' : 'bg-white/[.06] text-white/40']">{{ l }}</button>
+        </div>
       </div>
     </div>
   </div>

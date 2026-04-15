@@ -29,7 +29,7 @@
           <!-- Floating badge -->
           <div
             class="absolute -top-3 right-6 w-20 h-20 bg-red rounded-2xl flex flex-col items-center justify-center shadow-red-lg z-10">
-            <span class="font-display font-bold text-white text-xl leading-none">15</span>
+            <span class="font-display font-bold text-white text-xl leading-none">5</span>
             <span class="text-white/70 font-body text-[.45rem] tracking-[1px] uppercase text-center leading-tight mt-1">
               {{ t('badge') }}
             </span>
@@ -37,8 +37,8 @@
 
           <!-- Bottom card -->
           <div class="absolute -bottom-3 left-6 bg-navy rounded-2xl px-5 py-3 shadow-navy-lg z-10">
-            <div class="text-white/40 font-body text-[.55rem] tracking-[2px] uppercase mb-1">RDC</div>
-            <div class="font-display font-bold text-white text-xl leading-none">12</div>
+            <div class="text-white/40 font-body text-[.55rem] tracking-[2px] uppercase mb-1">Eastern RDC</div>
+            <div class="font-display font-bold text-white text-xl leading-none">South-Kivu</div>
             <div class="text-white/50 font-body text-[.6rem] mt-1">Provinces couvertes</div>
           </div>
 

@@ -9,6 +9,8 @@
   <SafiPadsPage v-else-if="currentPage === 'safipads'" @navigate="navigateTo" />
   <BlogNewsPage v-else-if="currentPage === 'blognews'" @navigate="navigateTo" />
   <BlogPostPage v-else-if="currentPage === 'blog-post'" :post-id="currentRouteParams.postId" @navigate="navigateTo" />
+  <AdminLoginPage v-else-if="currentPage === 'admin-login'" @navigate="navigateTo" />
+  <AdminPanelPage v-else-if="currentPage === 'admin-panel'" @navigate="navigateTo" />
 
   <!-- ── Home (default) ── -->
   <template v-else>
@@ -49,6 +51,8 @@ import SubProgramPage from '../src/pages/Subprogrampage.vue'
 import SafiPadsPage from '../src/pages/SafiPadsPage.vue'
 import BlogNewsPage from '../src/pages/BlogNewsPage.vue'
 import BlogPostPage from '../src/pages/Blogpostpage.vue'
+import AdminLoginPage from '../src/pages/AdminLoginPage.vue'
+import AdminPanelPage from '../src/pages/AdminPanelPage.vue'
 
 // ── State ─────────────────────────────────────────────────────────────────────
 const mobOpen = ref(false)
@@ -130,6 +134,14 @@ function navigateTo(target, params = {}) {
   }
   if (target === 'blog-post') {
     currentPage.value = 'blog-post'
+    return
+  }
+  if (target === 'admin-login') {
+    currentPage.value = 'admin-login'
+    return
+  }
+  if (target === 'admin-panel') {
+    currentPage.value = 'admin-panel'
     return
   }
 

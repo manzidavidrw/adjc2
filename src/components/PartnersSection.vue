@@ -40,10 +40,16 @@ import { useReveal } from '../composables/useReveal.js'
 
 import icanLogo from '../assets/logo/ican.svg'
 import ipenLogo from '../assets/logo/ipen.png'
-import ipbLogo from '../assets/logo/ipb.png'
+import ipbLogo from '../assets/logo/ipb2.png'
 import ochaLogo from '../assets/logo/ocha.svg'
 import shareLogo from '../assets/logo/share.svg'
 import inroadsLogo from '../assets/logo/inroads.png'
+import afwLogo from '../assets/logo/afw.png'
+import catalystLogo from '../assets/logo/catalyst.png'
+import endLogo from '../assets/logo/end.png'
+import inetrnLogo from '../assets/logo/intern.png'
+import ppleLogo from '../assets/logo/pple.png'
+import global from '../assets/logo/global.png'
 
 const { lang } = useTranslations()
 useReveal()
@@ -55,5 +61,11 @@ const partners = [
   { name: 'OCHA', logo: ochaLogo, url: 'https://www.unocha.org/democratic-republic-congo', bg: '#F3E5F5' },
   { name: 'SHARE', logo: shareLogo, url: 'https://share-netinternational.org/', bg: '#E91E63' },
   { name: 'Make Inroads', logo: inroadsLogo, url: 'https://www.makeinroads.org/', bg: '#1976D2' },
+  { name: 'AFW', logo: afwLogo, url: 'https://afwagportal.org/portal/home', bg: '#FFF3E0' },
+  { name: 'Catalyst', logo: catalystLogo, url: 'https://catalystnow.net/', bg: '#FCE4EC' },
+  { name: 'END Water Poverty', logo: endLogo, url: 'https://endwaterpoverty.org/member/action-pour-le-developpement-des-jeunes-au-congo-adjc/', bg: '#E8F4FD' },
+  { name: 'Intern', logo: inetrnLogo, url: 'https://www.democracy.community/organisation/action-pour-le-developpement-des-jeunes-au-congo', bg: '#F3E5F5' },
+  { name: 'People Powered', logo: ppleLogo, url: 'https://www.peoplepowered.org/about', bg: '#E8F5E8' },
+  { name: 'Global', logo: global, url: 'https://rightsofolderpeople.org/', bg: '#E3F2FD' },
 ]
 </script>
