@@ -157,8 +157,8 @@
           </div>
 
           <div class="bg-navy-mist py-10 px-8 rounded-xl">
-            <h3 class="font-display font-bold text-navy text-lg mb-6">{{ lang === 'fr' ? 'Ce Qui Nous Distingue' : 'What
-              Sets Us Apart' }}</h3>
+            <h3 class="font-display font-bold text-navy text-lg mb-6">{{ lang === 'fr' ? `Ce Qui Nous Distingue` : `What
+              Sets Us Apart` }}</h3>
             <ul class="space-y-3 font-body text-sm text-navy/80">
               <li class="flex gap-3">
                 <span class="text-red">→</span>

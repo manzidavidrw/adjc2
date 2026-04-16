@@ -327,10 +327,16 @@ const { lang } = useTranslations()
 const { user, signOut, checkAuth } = useAuth()
 const { posts, loading, fetchPosts } = useBlogPosts()
 
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_SERVICE_KEY
-)
+let supabase = null
+function getSupabase() {
+  if (!supabase) {
+    supabase = createClient(
+      import.meta.env.VITE_SUPABASE_URL,
+      import.meta.env.VITE_SUPABASE_SERVICE_KEY
+    )
+  }
+  return supabase
+}
 
 const showCreateModal = ref(false)
 const editingPost = ref(null)
@@ -556,7 +562,7 @@ async function uploadImageToStorage(dataUrl, type) {
   const blob = await response.blob()
 
   // Upload to Supabase Storage
-  const { data, error } = await supabase.storage
+  const { data, error } = await getSupabase().storage
     .from('blog-images')
     .upload(`posts/${fileName}`, blob, {
       cacheControl: '3600',
@@ -566,7 +572,7 @@ async function uploadImageToStorage(dataUrl, type) {
   if (error) throw error
 
   // Get public URL
-  const { data: publicData } = supabase.storage
+  const { data: publicData } = getSupabase().storage
     .from('blog-images')
     .getPublicUrl(`posts/${fileName}`)
 

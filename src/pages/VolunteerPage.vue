@@ -24,9 +24,9 @@
 
         <p class="text-white/60 font-body font-light leading-[1.8] mt-6 max-w-[560px]">
           {{ lang === 'fr'
-            ? 'Les bénévoles sont le cœur de notre travail. Utilisez vos compétences pour créer un changement
-          significatif.'
-          : 'Volunteers are the heart of our work. Use your skills to create meaningful change.' }}
+            ? `Les bénévoles sont le cœur de notre travail. Utilisez vos compétences pour créer un changement
+          significatif.`
+            : `Volunteers are the heart of our work. Use your skills to create meaningful change.` }}
         </p>
       </div>
     </section>
@@ -110,8 +110,8 @@
             <div class="flex gap-4">
               <div class="text-2xl flex-shrink-0">✅</div>
               <div>
-                <h4 class="font-body font-semibold mb-1">{{ lang === 'fr' ? 'Expérience Pratique' : 'Practical
-                  Experience' }}</h4>
+                <h4 class="font-body font-semibold mb-1">{{ lang === 'fr' ? `Expérience Pratique` : `Practical
+                  Experience` }}</h4>
                 <p class="text-white/70 font-body text-sm">
                   {{ lang === 'fr'
                     ? 'Développez des compétences réelles en travaillant sur des projets réels.'

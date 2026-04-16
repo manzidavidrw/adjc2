@@ -24,9 +24,9 @@
 
         <p class="text-white/60 font-body font-light leading-[1.8] mt-6 max-w-[560px]">
           {{ lang === 'fr'
-            ? 'Votre contribution aide les jeunes congolais à accéder à l\'éducation, la santé, la paix et un avenir
-          digne.'
-          : 'Your contribution helps Congolese youth access education, health, peace and a dignified future.' }}
+            ? `Votre contribution aide les jeunes congolais à accéder à l\'éducation, la santé, la paix et un avenir
+          digne.`
+            : `Your contribution helps Congolese youth access education, health, peace and a dignified future.` }}
         </p>
       </div>
     </section>
@@ -94,10 +94,10 @@
           </h2>
           <p class="font-body text-white/80 max-w-[600px] mx-auto">
             {{ lang === 'fr'
-              ? '100% de votre don soutient directement les jeunes congolais. Chaque contribution, grande ou petite, crée
-            un changement positif.'
-            : '100% of your donation directly supports Congolese youth. Every contribution, large or small, creates
-            positive change.' }}
+              ? `100% de votre don soutient directement les jeunes congolais. Chaque contribution, grande ou petite, crée
+            un changement positif.`
+              : `100% of your donation directly supports Congolese youth. Every contribution, large or small, creates
+            positive change.` }}
           </p>
         </div>
       </div>

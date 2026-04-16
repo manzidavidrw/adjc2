@@ -2,10 +2,22 @@
 import { ref, readonly } from 'vue'
 import { createClient } from '@supabase/supabase-js'
 
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-)
+let supabase = null
+
+function getSupabase() {
+  if (!supabase) {
+    const url = import.meta.env.VITE_SUPABASE_URL
+    const key = import.meta.env.VITE_SUPABASE_ANON_KEY
+    
+    if (!url || !key) {
+      console.error('Supabase environment variables are missing:', { url: !!url, key: !!key })
+      throw new Error('Supabase configuration is missing. Check .env file.')
+    }
+    
+    supabase = createClient(url, key)
+  }
+  return supabase
+}
 
 export function useBlogPosts() {
   const posts = ref([])
@@ -14,7 +26,7 @@ export function useBlogPosts() {
 
   async function fetchPosts() {
     loading.value = true
-    const { data, error: err } = await supabase
+    const { data, error: err } = await getSupabase()
       .from('blog_posts')
       .select('*')
       .order('created_at', { ascending: false })
@@ -24,7 +36,7 @@ export function useBlogPosts() {
   }
 
   async function fetchPost(id) {
-    const { data, error: err } = await supabase
+    const { data, error: err } = await getSupabase()
       .from('blog_posts')
       .select('*')
       .eq('id', id)
