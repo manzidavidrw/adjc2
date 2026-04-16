@@ -117,7 +117,10 @@ function navigateTo(target, params = {}) {
   }
   if (target === 'whatwedo') {
     currentPage.value = 'whatwedo'
-    currentRouteParams.value = { section: null }
+    currentRouteParams.value = { section }
+    if (section && currentPage.value === 'whatwedo') {
+      nextTick(() => scrollToSection(section))
+    }
     return
   }
   if (target === 'sub-program') {

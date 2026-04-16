@@ -1,5 +1,5 @@
 <template>
-  <div class="admin-panel-page min-h-screen bg-navy-mist">
+  <div class="admin-panel-page min-h-screen bg-navy-mist pt-[116px]">
     <!-- Header -->
     <header class="bg-navy-dark text-white py-6 px-8">
       <div class="max-w-[1280px] mx-auto flex items-center justify-between">

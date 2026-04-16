@@ -1,5 +1,5 @@
 <template>
-  <div class="admin-login-page min-h-screen bg-navy-dark flex items-center justify-center px-4">
+  <div class="admin-login-page min-h-screen bg-navy-dark flex items-center justify-center px-4 pt-[116px]">
     <div class="max-w-md w-full">
 
       <!-- Header -->

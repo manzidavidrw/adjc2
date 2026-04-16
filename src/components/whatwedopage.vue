@@ -246,6 +246,17 @@ import civic from '../assets/civic.jpeg'
 import prevention from '../assets/prevention.jpeg'
 import cohesion from '../assets/cohesion.jpeg'
 import leadership from '../assets/leadership.jpeg'
+import sensibilization from '../assets/sensibilization.jpeg'
+import initiative from '../assets/initiative.jpeg'
+import durable from '../assets/durable.jpeg'
+import green from '../assets/green.jpeg'
+import jeune from '../assets/jeune.jpeg'
+import research from '../assets/research.jpeg'
+import preve from '../assets/preuve.jpeg'
+import appre from '../assets/appre.jpeg'
+import suivant from '../assets/suivant.jpeg'
+import change from '../assets/change.jpeg'
+import last from '../assets/last.jpeg'
 
 // ── Props / emits ────────────────────────────────────────────────────────────
 const props = defineProps({
@@ -340,18 +351,18 @@ const AREA_PHOTOS = {
   'peace-extremism-prevention': prevention,
   'peace-social-cohesion': cohesion,
   'peace-leadership': leadership,
-  'climate-education': education,
-  'climate-adaptation': 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600&q=75',
-  'climate-natural-resources': 'https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&q=75',
-  'climate-green-skills': 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&q=75',
+  'climate-education': sensibilization,
+  'climate-adaptation': initiative,
+  'climate-natural-resources': durable,
+  'climate-green-skills': green,
   'climate-reforestation': protection,
-  'climate-advocacy': 'https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=600&q=75',
-  'research-participatory': 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&q=75',
-  'research-evidence-advocacy': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=75',
-  'research-learning': 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=75',
-  'research-monitoring': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=75',
-  'research-transformative': 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&q=75',
-  'research-amplify-voices': 'https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=600&q=75',
+  'climate-advocacy': jeune,
+  'research-participatory': research,
+  'research-evidence-advocacy': preve,
+  'research-learning': appre,
+  'research-monitoring': suivant,
+  'research-transformative': change,
+  'research-amplify-voices': last,
 }
 const FALLBACK_PHOTO = 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=75'
 
