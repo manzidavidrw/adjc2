@@ -11,6 +11,10 @@
   <BlogPostPage v-else-if="currentPage === 'blog-post'" :post-id="currentRouteParams.postId" @navigate="navigateTo" />
   <AdminLoginPage v-else-if="currentPage === 'admin-login'" @navigate="navigateTo" />
   <AdminPanelPage v-else-if="currentPage === 'admin-panel'" @navigate="navigateTo" />
+  <DonatePage v-else-if="currentPage === 'donate'" @navigate="navigateTo" />
+  <PartnershipsPage v-else-if="currentPage === 'partnerships'" @navigate="navigateTo" />
+  <VolunteerPage v-else-if="currentPage === 'volunteer'" @navigate="navigateTo" />
+  <CareersPage v-else-if="currentPage === 'careers'" @navigate="navigateTo" />
 
   <!-- ── Home (default) ── -->
   <template v-else>
@@ -53,6 +57,10 @@ import BlogNewsPage from '../src/pages/BlogNewsPage.vue'
 import BlogPostPage from '../src/pages/Blogpostpage.vue'
 import AdminLoginPage from '../src/pages/AdminLoginPage.vue'
 import AdminPanelPage from '../src/pages/AdminPanelPage.vue'
+import DonatePage from '../src/pages/DonatePage.vue'
+import PartnershipsPage from '../src/pages/PartnershipsPage.vue'
+import VolunteerPage from '../src/pages/VolunteerPage.vue'
+import CareersPage from '../src/pages/CareersPage.vue'
 
 // ── State ─────────────────────────────────────────────────────────────────────
 const mobOpen = ref(false)
@@ -145,6 +153,22 @@ function navigateTo(target, params = {}) {
   }
   if (target === 'admin-panel') {
     currentPage.value = 'admin-panel'
+    return
+  }
+  if (target === 'donate') {
+    currentPage.value = 'donate'
+    return
+  }
+  if (target === 'partnerships') {
+    currentPage.value = 'partnerships'
+    return
+  }
+  if (target === 'volunteer') {
+    currentPage.value = 'volunteer'
+    return
+  }
+  if (target === 'careers') {
+    currentPage.value = 'careers'
     return
   }
 

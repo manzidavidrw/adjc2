@@ -244,11 +244,9 @@ const menus = ref([
     key: 'takeaction', label: 'menuTakeAction', desc: 'menuTakeActionDesc', ico: '❤️', page: 'donate',
     subs: [
       { navId: 'donate', anchor: null, ico: '💳', label: 'subDonate', desc: 'subDonateDesc' },
-      { navId: 'contact', anchor: null, ico: '🙌', label: 'subVolunteer', desc: 'subVolunteerDesc' },
-      { navId: 'contact', anchor: null, ico: '🏢', label: 'subPartnerOrg', desc: 'subPartnerOrgDesc' },
-      { navId: 'contact', anchor: null, ico: '📣', label: 'subAdvocate', desc: 'subAdvocateDesc' },
-      { navId: 'contact', anchor: null, ico: '🎓', label: 'subMentor', desc: 'subMentorDesc' },
-      { navId: 'contact', anchor: null, ico: '📬', label: 'subNewsletter', desc: 'subNewsletterDesc' },
+      { navId: 'volunteer', anchor: null, ico: '🙌', label: 'subVolunteer', desc: 'subVolunteerDesc' },
+      { navId: 'partnerships', anchor: null, ico: '🏢', label: 'subPartnerOrg', desc: 'subPartnerOrgDesc' },
+      { navId: 'careers', anchor: null, ico: '🎓', label: 'subCareers', desc: 'subCareersDesc' },
     ],
   },
 ])
