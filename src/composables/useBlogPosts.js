@@ -8,12 +8,12 @@ function getSupabase() {
   if (!supabase) {
     const url = import.meta.env.VITE_SUPABASE_URL
     const key = import.meta.env.VITE_SUPABASE_ANON_KEY
-    
+
     if (!url || !key) {
       console.error('Supabase environment variables are missing:', { url: !!url, key: !!key })
       throw new Error('Supabase configuration is missing. Check .env file.')
     }
-    
+
     supabase = createClient(url, key)
   }
   return supabase

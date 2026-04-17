@@ -3,12 +3,33 @@
 
     <!-- ── Lang / utility bar ── -->
     <div :class="['bg-navy-dark border-b border-white/[.06] flex items-center justify-between px-8 overflow-hidden transition-all duration-500',
-      scrolled ? 'h-0 opacity-0 border-b-0' : 'h-9 opacity-100']">
-      <div class="flex items-center gap-4">
-        <span class="text-white/30 font-body text-[.6rem] tracking-[1.5px]">✉ info@adjcongo.org</span>
-        <span class="text-white/15">|</span>
-        <span class="text-white/30 font-body text-[.6rem] tracking-[1.5px]">☎ +243 81 234 5678</span>
+      scrolled ? 'h-0 opacity-0 border-b-0' : 'h-10 opacity-100']">
+
+      <!-- Left: two office locations -->
+      <div class="flex items-center gap-0 divide-x divide-white/[.08]">
+
+        <!-- Bukavu -->
+        <div class="flex items-center gap-2.5 pr-5">
+          <div class="flex items-center justify-center w-4 h-4 rounded-sm bg-red/20 flex-shrink-0">
+            <svg class="w-2.5 h-2.5 text-red" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd"
+                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="text-white/60 font-body font-semibold text-[.58rem] tracking-[1.5px] uppercase">Bukavu</span>
+            <span class="text-white/20 text-[.58rem]">·</span>
+            <span class="text-white/30 font-body text-[.58rem] tracking-[0.5px]">✉ info@adjcongo.org</span>
+            <span class="text-white/20 text-[.58rem]">·</span>
+            <span class="text-white/30 font-body text-[.58rem] tracking-[0.5px]">☎ +243 985 031 016</span>
+          </div>
+        </div>
+
+
       </div>
+
+      <!-- Right: language switcher -->
       <div class="flex items-center gap-1">
         <button v-for="l in ['fr', 'en']" :key="l" @click="setLang(l)" :class="['text-[.62rem] font-semibold tracking-[2px] uppercase px-3 py-0.5 rounded-sm transition-all duration-200 border-none cursor-pointer font-body',
           lang === l ? 'bg-red text-white' : 'bg-transparent text-white/40 hover:text-white/70']">{{ l }}</button>
@@ -142,12 +163,43 @@
         </div>
       </div>
     </div>
-    <div class="px-6 py-6 border-t border-white/[.07]">
+
+    <!-- Mobile footer: offices + lang + donate -->
+    <div class="px-6 py-6 border-t border-white/[.07] flex flex-col gap-4">
+
+      <!-- Office locations -->
+      <div class="grid grid-cols-2 gap-3">
+        <div class="flex flex-col gap-1.5 bg-white/[.04] rounded-xl px-4 py-3">
+          <div class="flex items-center gap-1.5">
+            <svg class="w-3 h-3 text-red flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd"
+                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                clip-rule="evenodd" />
+            </svg>
+            <span class="text-white font-body font-bold text-[.62rem] tracking-[1.5px] uppercase">Bukavu</span>
+          </div>
+          <p class="text-white/35 font-body text-[.6rem] leading-relaxed">
+            info@adjcongo.org<br>+243 985 031 016
+          </p>
+        </div>
+        <div class="flex flex-col gap-1.5 bg-white/[.04] rounded-xl px-4 py-3">
+          <div class="flex items-center gap-1.5">
+            <svg class="w-3 h-3 text-red flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd"
+                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                clip-rule="evenodd" />
+            </svg>
+            <span class="text-white font-body font-bold text-[.62rem] tracking-[1.5px] uppercase">Goma</span>
+          </div>
+
+        </div>
+      </div>
+
       <button @click="navigate('donate'); $emit('toggleMob')"
         class="w-full bg-red hover:bg-red-dark text-white font-body font-semibold text-base py-4 rounded-xl border-none cursor-pointer transition-colors duration-200">
         {{ t('navDonate') }} →
       </button>
-      <div class="flex items-center justify-center gap-4 mt-5">
+      <div class="flex items-center justify-center gap-4">
         <button @click="navigate('admin-login'); $emit('toggleMob')"
           class="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 flex items-center justify-center text-white/70 hover:text-white transition-all duration-200 cursor-pointer"
           title="Admin Login">
@@ -195,13 +247,12 @@ function onScroll() {
 }
 
 onMounted(() => {
-  setNavbarHeight()          // set immediately on load
+  setNavbarHeight()
   window.addEventListener('scroll', onScroll, { passive: true })
 })
 onUnmounted(() => window.removeEventListener('scroll', onScroll))
 
 const menus = ref([
-  // 1. About Us
   {
     key: 'about', label: 'menuAboutUs', desc: 'menuAboutUsDesc', ico: '🌍', page: 'whoweare',
     subs: [
@@ -213,7 +264,6 @@ const menus = ref([
       { navId: 'whoweare', anchor: 'partners', ico: '🤝', label: 'subPartners', desc: 'subPartnersDesc' },
     ],
   },
-  // 2. What We Do
   {
     key: 'whatwedo', label: 'menuWhatWeDo', desc: 'menuWhatWeDoDesc', ico: '🚀', page: 'whatwedo',
     subs: [
@@ -224,7 +274,6 @@ const menus = ref([
       { navId: 'whatwedo', anchor: 'research', ico: '🔬', label: 'subResearch', desc: 'subResearchDesc' },
     ],
   },
-  // 3. Safi Pads
   {
     key: 'safipads', label: 'menuSafiPads', desc: 'menuSafiPadsDesc', ico: '🌸', page: 'safipads',
     subs: [
@@ -234,12 +283,10 @@ const menus = ref([
       { navId: 'safipads', anchor: null, ico: '🤝', label: 'subSafiPartner', desc: 'subSafiPartnerDesc' },
     ],
   },
-  // 4. Blog & News — NO sub-items, just a direct link
   {
     key: 'news', label: 'menuBlogsNews', desc: 'menuBlogsNewsDesc', ico: '📰', page: 'blognews',
-    subs: [], // ← empty = no dropdown, clicking the label goes straight to the page
+    subs: [],
   },
-  // 5. Take Action
   {
     key: 'takeaction', label: 'menuTakeAction', desc: 'menuTakeActionDesc', ico: '❤️', page: 'donate',
     subs: [
@@ -247,6 +294,7 @@ const menus = ref([
       { navId: 'volunteer', anchor: null, ico: '🙌', label: 'subVolunteer', desc: 'subVolunteerDesc' },
       { navId: 'partnerships', anchor: null, ico: '🏢', label: 'subPartnerOrg', desc: 'subPartnerOrgDesc' },
       { navId: 'careers', anchor: null, ico: '🎓', label: 'subCareers', desc: 'subCareersDesc' },
+      { navId: 'contact', anchor: null, ico: '📞', label: 'subContactUs', desc: 'subContactUsDesc' },
     ],
   },
 ])

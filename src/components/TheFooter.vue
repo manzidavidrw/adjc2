@@ -15,7 +15,7 @@
           <!-- Logo -->
           <div class="flex items-center gap-3 mb-5">
             <div class="w-10 h-10 bg-red rounded-lg flex items-center justify-center flex-shrink-0">
-              <span class="font-display font-bold text-white text-sm tracking-tight">ADJ</span>
+              <span class="font-display font-bold text-white text-sm tracking-tight">ADJC</span>
             </div>
             <div>
               <div class="font-display font-bold text-white text-lg tracking-[2px] leading-none">ADJC</div>
@@ -76,7 +76,7 @@
             }}</h5>
           <ul class="flex flex-col gap-3 list-none">
             <li v-for="soc in socials" :key="soc.name">
-              <a href="#"
+              <a :href="soc.url" target="_blank"
                 class="text-white/40 hover:text-white font-body text-sm no-underline transition-colors duration-200 flex items-center gap-2">
                 <span class="w-3 h-[1.5px] bg-red/50 flex-shrink-0"></span>
                 {{ soc.name }}
@@ -86,9 +86,9 @@
 
           <!-- Social icon buttons -->
           <div class="flex gap-2 mt-6">
-            <a v-for="soc in socials" :key="soc.icon" href="#"
-              class="w-9 h-9 rounded-lg border border-white/[.1] flex items-center justify-center text-white/40 text-sm font-bold no-underline hover:bg-red hover:border-red hover:text-white transition-all duration-200">{{
-              soc.icon }}</a>
+            <a v-for="soc in socials" :key="soc.name" :href="soc.url" target="_blank"
+              class="w-9 h-9 rounded-lg border border-white/[.1] flex items-center justify-center text-white/40 text-sm font-bold no-underline hover:bg-red hover:border-red hover:text-white transition-all duration-200"><i
+                :class="soc.icon"></i></a>
           </div>
         </div>
       </div>
@@ -130,10 +130,9 @@ const navLinks = [
 ]
 
 const socials = [
-  { name: 'Facebook', icon: 'f' },
-  { name: 'X / Twitter', icon: '𝕏' },
-  { name: 'LinkedIn', icon: 'in' },
-  { name: 'YouTube', icon: '▶' },
+  { name: 'Facebook', icon: 'fab fa-facebook-f', url: 'https://www.facebook.com/ajd.congo.7?_rdc=1&_rdr' },
+  { name: 'Instagram', icon: 'fab fa-instagram', url: 'https://www.instagram.com/adjcongo/' },
+  { name: 'Twitter', icon: 'fab fa-twitter', url: 'https://x.com/adjcongo' },
 ]
 
 function go(id) { document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }) }

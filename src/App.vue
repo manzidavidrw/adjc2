@@ -15,6 +15,7 @@
   <PartnershipsPage v-else-if="currentPage === 'partnerships'" @navigate="navigateTo" />
   <VolunteerPage v-else-if="currentPage === 'volunteer'" @navigate="navigateTo" />
   <CareersPage v-else-if="currentPage === 'careers'" @navigate="navigateTo" />
+  <ContactUsPage v-else-if="currentPage === 'contact'" @navigate="navigateTo" />
 
   <!-- ── Home (default) ── -->
   <template v-else>
@@ -27,7 +28,6 @@
       <PartnersSection />
 
       <GallerySection />
-      <ContactSection />
     </main>
   </template>
 
@@ -47,7 +47,6 @@ import ImpactSection from '../src/components/ImpactSection.vue'
 import TeamSection from '../src/components/TeamSection.vue'
 import GallerySection from '../src/components/GallerySection.vue'
 import PartnersSection from '../src/components/PartnersSection.vue'
-import ContactSection from '../src/components/ContactSection.vue'
 import TheFooter from '../src/components/TheFooter.vue'
 import WhoWeArePage from '../src/components/whowearepage.vue'
 import WhatWeDoPage from '../src/components/whatwedopage.vue'
@@ -61,6 +60,7 @@ import DonatePage from '../src/pages/DonatePage.vue'
 import PartnershipsPage from '../src/pages/PartnershipsPage.vue'
 import VolunteerPage from '../src/pages/VolunteerPage.vue'
 import CareersPage from '../src/pages/CareersPage.vue'
+import ContactUsPage from '../src/pages/ContactUsPage.vue'
 
 // ── State ─────────────────────────────────────────────────────────────────────
 const mobOpen = ref(false)
@@ -169,6 +169,10 @@ function navigateTo(target, params = {}) {
   }
   if (target === 'careers') {
     currentPage.value = 'careers'
+    return
+  }
+  if (target === 'contact') {
+    currentPage.value = 'contact'
     return
   }
 

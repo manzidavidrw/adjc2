@@ -101,6 +101,8 @@ const TR = {
     subMentorDesc: 'Accompagner un jeune congolais',
     subNewsletter: 'Newsletter',
     subNewsletterDesc: 'Rester informé de nos actualités',
+    subContactUs: 'Nous Contacter',
+    subContactUsDesc: 'Entrez en contact avec nous',
 
     heroEyebrow: 'ONG enregistrée · RDC · Fondée 2010',
     heroTitle: 'Investir dans la jeunesse pour bâtir le Congo de demain',
@@ -111,7 +113,7 @@ const TR = {
     heroStat1n: '5 000+', heroStat1l: 'Jeunes soutenus',
     heroStat3n: '850+', heroStat3l: 'Bourses attribuées',
     heroStat4n: '15', heroStat4l: 'Années d\'impact',
-    tickers: ['Éducation', 'Formation Pro', 'Entrepreneuriat', 'Leadership', 'Santé', 'Numérique', 'RDC · 12 Provinces', 'Impact Mesurable'],
+    tickers: ['Éducation', 'Formation Pro', 'Entrepreneuriat', 'Leadership', 'Santé', 'Numérique', 'Impact Mesurable'],
 
     aboutEye: 'Notre Histoire',
     aboutTitle: 'Qui sommes-nous ?',
@@ -206,8 +208,8 @@ const TR = {
     conEye: 'Nous Contacter',
     conTitle: 'Parlons de votre Engagement',
     conSub: 'Une question, un partenariat ou une candidature ? Notre équipe est à votre écoute.',
-    ciAddr: 'Adresse', ciAddrV: '123 Avenue de la Paix, Gombe\nKinshasa, RDC',
-    ciPhone: 'Téléphone', ciPhoneV: '+243 81 234 5678\n+243 99 876 5432',
+    ciAddr: 'Adresse', ciAddrV: 'DC Kinshasa SUD-KIVU Bukavu,40BAv.de la montagneQ. Nyalukemba, Comm. d\'Ibanda, Ville de Bukavu\nRDC Kinshasa NORD-KIVU Goma, Centre-Ville Ville de Goma, Com de Goma, Q.Mikeno Av. Kitona : No 11',
+    ciPhone: 'Téléphone', ciPhoneV: ' +243 985 031 016\n +243 985 031 016',
     ciEmail: 'Email', ciEmailV: 'info@adjcongo.org\nprogrammes@adjcongo.org',
     ciHours: 'Horaires', ciHoursV: 'Lun–Ven : 8h–17h\nSam : 9h–13h',
     fFirst: 'Prénom', fFirstPh: 'Votre prénom',
@@ -218,11 +220,12 @@ const TR = {
     fMsg: 'Message', fMsgPh: 'Votre message...',
     fSend: 'Envoyer le Message',
 
-    ftTagline: "Investir dans la jeunesse congolaise depuis 2010. Ensemble, construisons un Congo prospère pour les générations futures.",
+    ftTagline: "Investir dans la jeunesse congolaise depuis 2021. Ensemble, construisons un Congo prospère pour les générations futures.",
     ftNlLabel: 'Newsletter', ftNlPh: 'votre@email.com', ftNlBtn: "S'abonner",
     ftNav: 'Navigation', ftProgs: 'Programmes', ftConnect: 'Suivez-nous',
     ftCopy: '© 2026 ADJC. Tous droits réservés.',
     ftPrivacy: 'Confidentialité', ftTerms: 'Conditions',
+
   },
 
   en: {
@@ -323,6 +326,8 @@ const TR = {
     subMentorDesc: 'Support a Congolese young person',
     subNewsletter: 'Newsletter',
     subNewsletterDesc: 'Stay informed about our news',
+    subContactUs: 'Contact Us',
+    subContactUsDesc: 'Get in touch with us',
 
     heroEyebrow: 'Registered NGO · DRC · Founded 2010',
     heroTitle: 'Investing in youth to build the Congo of tomorrow',
@@ -427,8 +432,8 @@ const TR = {
     conEye: 'Get In Touch',
     conTitle: 'Let\'s Talk About Your Commitment',
     conSub: 'A question, a partnership or an application? Our team is here for you.',
-    ciAddr: 'Address', ciAddrV: '123 Avenue de la Paix, Gombe\nKinshasa, DRC',
-    ciPhone: 'Phone', ciPhoneV: '+243 81 234 5678\n+243 99 876 5432',
+    ciAddr: 'Address', ciAddrV: 'DC Kinshasa SUD-KIVU Bukavu,40BAv.de la montagneQ. Nyalukemba, Comm. d\'Ibanda, Ville de Bukavu\nRDC Kinshasa NORD-KIVU Goma, Centre-Ville Ville de Goma, Com de Goma, Q.Mikeno Av. Kitona : No 11',
+    ciPhone: 'Phone', ciPhoneV: ' +243 985 031 016\n +243 985 031 016',
     ciEmail: 'Email', ciEmailV: 'info@adjcongo.org\nprogrammes@adjcongo.org',
     ciHours: 'Hours', ciHoursV: 'Mon–Fri: 8am–5pm\nSat: 9am–1pm',
     fFirst: 'First Name', fFirstPh: 'Your first name',
@@ -439,11 +444,13 @@ const TR = {
     fMsg: 'Message', fMsgPh: 'Your message...',
     fSend: 'Send Message',
 
-    ftTagline: "Investing in Congolese youth since 2010. Together, let's build a prosperous Congo for future generations.",
+    ftTagline: "Investing in Congolese youth since 2021. Together, let's build a prosperous Congo for future generations.",
     ftNlLabel: 'Newsletter', ftNlPh: 'your@email.com', ftNlBtn: 'Subscribe',
     ftNav: 'Navigation', ftProgs: 'Programs', ftConnect: 'Follow Us',
     ftCopy: '© 2026 ADJC. All rights reserved.',
     ftPrivacy: 'Privacy', ftTerms: 'Terms',
+
+
   },
 }
 
