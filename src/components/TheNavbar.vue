@@ -26,16 +26,25 @@
           </div>
         </div>
 
-
       </div>
 
       <!-- Right: language switcher -->
       <div class="flex items-center gap-1">
+        <!-- Email icon -->
+        <a href="https://server104.web-hosting.com:2096/" target="_blank"
+          class="hidden md:flex items-center justify-center w-8 h-8 rounded-full transition-all hover:scale-105" :class="isScrolled
+            ? 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+            : 'text-white hover:text-white/80 hover:bg-white/10'" title="Webmail Login">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+          </svg>
+        </a>
         <button v-for="l in ['fr', 'en']" :key="l" @click="setLang(l)" :class="['text-[.62rem] font-semibold tracking-[2px] uppercase px-3 py-0.5 rounded-sm transition-all duration-200 border-none cursor-pointer font-body',
           lang === l ? 'bg-red text-white' : 'bg-transparent text-white/40 hover:text-white/70']">{{ l }}</button>
       </div>
     </div>
-
     <!-- ── Main navbar ── -->
     <nav :class="['transition-all duration-500',
       scrolled ? 'bg-navy-dark/96 backdrop-blur-2xl shadow-[0_4px_30px_rgba(0,0,0,.35)]' : 'bg-transparent']">
@@ -208,6 +217,14 @@
               d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
           </svg>
         </button>
+        <a href="https://server104.web-hosting.com:2096/" target="_blank"
+          class="p-3 rounded-full bg-brand-yellow text-brand-green hover:brightness-110 transition-all shadow-md">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+          </svg>
+        </a>
         <div class="flex items-center gap-2">
           <button v-for="l in ['fr', 'en']" :key="l" @click="setLang(l)" :class="['text-xs font-semibold tracking-[2px] uppercase px-4 py-2 rounded-lg border-none cursor-pointer font-body transition-all duration-200',
             lang === l ? 'bg-red text-white' : 'bg-white/[.06] text-white/40']">{{ l }}</button>

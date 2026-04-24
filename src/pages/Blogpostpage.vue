@@ -89,11 +89,6 @@
           {{ lang === 'fr' ? post.excerptFr : post.excerptEn }}
         </p>
 
-        <!-- Image Top -->
-        <div v-if="post.imgTop" class="rounded-2xl overflow-hidden mb-10 aspect-[16/9]">
-          <img :src="post.imgTop" class="w-full h-full object-cover" />
-        </div>
-
         <!-- Body -->
         <article class="prose-adjc" v-html="lang === 'fr' ? post.bodyFr : post.bodyEn"></article>
 

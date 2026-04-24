@@ -212,47 +212,51 @@
               </div>
             </div>
 
-            <!-- Image Uploads -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Image Uploads - FIXED SECTION -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <!-- Main Image -->
               <div>
                 <label class="block text-navy font-body font-semibold text-sm mb-2">
                   {{ lang === 'fr' ? 'Image Principale' : 'Main Image' }}
+                  <span v-if="!editingPost" class="text-red">*</span>
+                  <span v-if="editingPost" class="text-navy/40 text-xs ml-2">
+                    {{ lang === 'fr' ? '(laisser vide pour garder l\'actuelle)' : '(leave empty to keep current)' }}
+                  </span>
                 </label>
                 <div class="relative">
-                  <input ref="imgMainInput" type="file" accept="image/*" required
-                    @change="handleImageUpload('img', $event)"
-                    class="w-full text-transparent file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-red file:text-white cursor-pointer" />
+                  <input ref="imgMainInput" type="file" accept="image/*" @change="handleImageUpload('img', $event)"
+                    :required="!editingPost && !form.img"
+                    class="w-full text-transparent file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-red file:text-white hover:file:bg-red-dark cursor-pointer transition-colors" />
                 </div>
-                <div v-if="form.img"
-                  class="mt-3 rounded-lg overflow-hidden border border-navy/10 h-32 bg-navy/5 flex items-center justify-center">
-                  <img :src="form.img" :alt="'Main preview'" class="h-full w-full object-cover" />
-                </div>
-              </div>
-
-              <!-- Top Image -->
-              <div>
-                <label class="block text-navy font-body font-semibold text-sm mb-2">
-                  {{ lang === 'fr' ? 'Image Haut' : 'Top Image' }}
-                </label>
-                <input ref="imgTopInput" type="file" accept="image/*" @change="handleImageUpload('imgTop', $event)"
-                  class="w-full text-transparent file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-navy/10 file:text-navy cursor-pointer" />
-                <div v-if="form.imgTop"
-                  class="mt-3 rounded-lg overflow-hidden border border-navy/10 h-32 bg-navy/5 flex items-center justify-center">
-                  <img :src="form.imgTop" :alt="'Top preview'" class="h-full w-full object-cover" />
+                <div v-if="form.img || form.imgPreview"
+                  class="mt-3 rounded-lg overflow-hidden border border-navy/10 h-32 bg-navy/5 flex items-center justify-center relative group">
+                  <img :src="form.imgPreview || form.img" alt="Main preview" class="h-full w-full object-cover" />
+                  <button v-if="editingPost" type="button" @click="clearImage('img')"
+                    class="absolute top-2 right-2 bg-red text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
                 </div>
               </div>
 
               <!-- Middle Image -->
               <div>
                 <label class="block text-navy font-body font-semibold text-sm mb-2">
-                  {{ lang === 'fr' ? 'Image Milieu' : 'Middle Image' }}
+                  {{ lang === 'fr' ? 'Image Milieu (optionnelle)' : 'Middle Image (optional)' }}
                 </label>
                 <input ref="imgMidInput" type="file" accept="image/*" @change="handleImageUpload('imgMid', $event)"
-                  class="w-full text-transparent file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-navy/10 file:text-navy cursor-pointer" />
-                <div v-if="form.imgMid"
-                  class="mt-3 rounded-lg overflow-hidden border border-navy/10 h-32 bg-navy/5 flex items-center justify-center">
-                  <img :src="form.imgMid" :alt="'Mid preview'" class="h-full w-full object-cover" />
+                  class="w-full text-transparent file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-navy/10 file:text-navy hover:file:bg-navy/20 cursor-pointer transition-colors" />
+                <div v-if="form.imgMid || form.imgMidPreview"
+                  class="mt-3 rounded-lg overflow-hidden border border-navy/10 h-32 bg-navy/5 flex items-center justify-center relative group">
+                  <img :src="form.imgMidPreview || form.imgMid" alt="Middle preview"
+                    class="h-full w-full object-cover" />
+                  <button type="button" @click="clearImage('imgMid')"
+                    class="absolute top-2 right-2 bg-red text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
                 </div>
               </div>
             </div>
@@ -316,7 +320,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useTranslations } from '../composables/useTranslations.js'
 import { useAuth } from '../composables/useAuth.js'
 import { useBlogPosts } from '../composables/useBlogPosts.js'
@@ -344,7 +348,6 @@ const saving = ref(false)
 const uploadingImages = ref(false)
 
 const imgMainInput = ref(null)
-const imgTopInput = ref(null)
 const imgMidInput = ref(null)
 
 const form = ref({
@@ -358,21 +361,20 @@ const form = ref({
   bodyFr: '',
   bodyEn: '',
   img: '',
-  imgTop: '',
+  imgPreview: '', // NEW: for preview
   imgMid: '',
+  imgMidPreview: '', // NEW: for preview
+  imgFile: null, // NEW: store file
+  imgMidFile: null, // NEW: store file
   date: '',
   readTime: 5,
   tagsString: '',
 })
 
 onMounted(async () => {
-  // Verify authentication is valid
   await checkAuth()
-
-  // Give auth state a moment to update
   await new Promise(resolve => setTimeout(resolve, 100))
 
-  // If still not authenticated, redirect to login
   if (!user.value) {
     emit('navigate', 'admin-login')
     return
@@ -393,8 +395,11 @@ function resetForm() {
     bodyFr: '',
     bodyEn: '',
     img: '',
-    imgTop: '',
+    imgPreview: '',
     imgMid: '',
+    imgMidPreview: '',
+    imgFile: null,
+    imgMidFile: null,
     date: '',
     readTime: 5,
     tagsString: '',
@@ -414,8 +419,11 @@ function editPost(post) {
     bodyFr: post.bodyFr,
     bodyEn: post.bodyEn,
     img: post.img,
-    imgTop: post.imgTop || '',
+    imgPreview: '',
     imgMid: post.imgMid || '',
+    imgMidPreview: '',
+    imgFile: null,
+    imgMidFile: null,
     date: post.date,
     readTime: post.readTime,
     tagsString: post.tags ? post.tags.join(', ') : '',
@@ -423,11 +431,25 @@ function editPost(post) {
   showCreateModal.value = true
 }
 
+function clearImage(field) {
+  if (field === 'img') {
+    form.value.img = ''
+    form.value.imgPreview = ''
+    form.value.imgFile = null
+    if (imgMainInput.value) imgMainInput.value.value = ''
+  } else if (field === 'imgMid') {
+    form.value.imgMid = ''
+    form.value.imgMidPreview = ''
+    form.value.imgMidFile = null
+    if (imgMidInput.value) imgMidInput.value.value = ''
+  }
+}
+
 async function handleSubmit() {
   saving.value = true
 
   try {
-    // Upload images first
+    // Upload new images if files were selected
     const uploadedUrls = await uploadImages()
 
     const postData = {
@@ -440,25 +462,22 @@ async function handleSubmit() {
       excerpt_en: form.value.excerptEn,
       body_fr: form.value.bodyFr,
       body_en: form.value.bodyEn,
-      img_url: uploadedUrls.img || form.value.img,
-      img_top_url: uploadedUrls.imgTop || form.value.imgTop || null,
-      img_mid_url: uploadedUrls.imgMid || form.value.imgMid || null,
+      img_url: uploadedUrls.img || form.value.img, // Use new upload or keep existing
+      img_mid_url: uploadedUrls.imgMid || form.value.imgMid || null, // Use new upload or keep existing
       date: form.value.date,
       read_time: parseInt(form.value.readTime),
       tags: form.value.tagsString ? form.value.tagsString.split(',').map(tag => tag.trim()) : [],
     }
 
     if (editingPost.value) {
-      // Update existing post
-      const { error } = await supabase
+      const { error } = await getSupabase()
         .from('blog_posts')
         .update(postData)
         .eq('id', editingPost.value.id)
 
       if (error) throw error
     } else {
-      // Create new post
-      const { error } = await supabase
+      const { error } = await getSupabase()
         .from('blog_posts')
         .insert([postData])
 
@@ -481,7 +500,7 @@ async function deletePost(post) {
   }
 
   try {
-    const { error } = await supabase
+    const { error } = await getSupabase()
       .from('blog_posts')
       .delete()
       .eq('id', post.id)
@@ -499,9 +518,7 @@ function closeModal() {
   showCreateModal.value = false
   editingPost.value = null
   resetForm()
-  // Reset file inputs
   if (imgMainInput.value) imgMainInput.value.value = ''
-  if (imgTopInput.value) imgTopInput.value.value = ''
   if (imgMidInput.value) imgMidInput.value.value = ''
 }
 
@@ -509,41 +526,40 @@ async function handleImageUpload(field, event) {
   const file = event.target.files?.[0]
   if (!file) return
 
+  // Store the file for later upload
+  if (field === 'img') {
+    form.value.imgFile = file
+  } else if (field === 'imgMid') {
+    form.value.imgMidFile = file
+  }
+
   // Create preview
   const reader = new FileReader()
   reader.onload = (e) => {
-    form.value[field] = e.target.result
+    if (field === 'img') {
+      form.value.imgPreview = e.target.result
+    } else if (field === 'imgMid') {
+      form.value.imgMidPreview = e.target.result
+    }
   }
   reader.readAsDataURL(file)
 }
 
 async function uploadImages() {
   uploadingImages.value = true
-  const uploadedUrls = { img: '', imgTop: '', imgMid: '' }
+  const uploadedUrls = { img: '', imgMid: '' }
 
   try {
-    // Upload main image if it's a file (not a data URL from existing post)
-    if (form.value.img && form.value.img.startsWith('data:')) {
-      const mainUrl = await uploadImageToStorage(form.value.img, 'main')
+    // Upload main image if a new file was selected
+    if (form.value.imgFile) {
+      const mainUrl = await uploadImageToStorage(form.value.imgFile, 'main')
       uploadedUrls.img = mainUrl
-    } else if (form.value.img) {
-      uploadedUrls.img = form.value.img
     }
 
-    // Upload top image if provided and is a file
-    if (form.value.imgTop && form.value.imgTop.startsWith('data:')) {
-      const topUrl = await uploadImageToStorage(form.value.imgTop, 'top')
-      uploadedUrls.imgTop = topUrl
-    } else if (form.value.imgTop) {
-      uploadedUrls.imgTop = form.value.imgTop
-    }
-
-    // Upload middle image if provided and is a file
-    if (form.value.imgMid && form.value.imgMid.startsWith('data:')) {
-      const midUrl = await uploadImageToStorage(form.value.imgMid, 'mid')
+    // Upload middle image if a new file was selected
+    if (form.value.imgMidFile) {
+      const midUrl = await uploadImageToStorage(form.value.imgMidFile, 'mid')
       uploadedUrls.imgMid = midUrl
-    } else if (form.value.imgMid) {
-      uploadedUrls.imgMid = form.value.imgMid
     }
 
     return uploadedUrls
@@ -552,19 +568,16 @@ async function uploadImages() {
   }
 }
 
-async function uploadImageToStorage(dataUrl, type) {
+async function uploadImageToStorage(file, type) {
   const timestamp = Date.now()
   const randomId = Math.random().toString(36).substring(7)
-  const fileName = `${editingPost.value?.id || 'new'}-${type}-${timestamp}-${randomId}.jpg`
-
-  // Convert data URL to blob
-  const response = await fetch(dataUrl)
-  const blob = await response.blob()
+  const fileExt = file.name.split('.').pop()
+  const fileName = `${editingPost.value?.id || 'new'}-${type}-${timestamp}-${randomId}.${fileExt}`
 
   // Upload to Supabase Storage
   const { data, error } = await getSupabase().storage
     .from('blog-images')
-    .upload(`posts/${fileName}`, blob, {
+    .upload(`posts/${fileName}`, file, {
       cacheControl: '3600',
       upsert: false,
     })

@@ -22,59 +22,59 @@
           </div>
         </div>
         <!-- Overlays -->
-        <<div class="absolute inset-0 bg-gradient-to-r from-black/55 via-black/15 to-transparent">
-      </div>
-      <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"></div>
-      <!-- Red accent line -->
-      <div class="absolute left-0 top-[25%] bottom-[25%] w-[3px] bg-red"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-black/55 via-black/15 to-transparent">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"></div>
+        <!-- Red accent line -->
+        <div class="absolute left-0 top-[25%] bottom-[25%] w-[3px] bg-red"></div>
 
-      <!-- Slide counter — sits below navbar -->
-      <div class="absolute right-10 z-20 text-white/30 font-display font-bold text-sm select-none"
-        style="top: calc(104px + 2rem)">
-        <span class="text-white text-2xl">{{ String(i + 1).padStart(2, '0') }}</span>
-        <span class="mx-1">/</span>
-        <span>{{ String(slides.length).padStart(2, '0') }}</span>
-      </div>
-
-      <!-- Slide content — anchored to bottom, never reaches navbar -->
-      <div class="relative h-full max-w-[1280px] mx-auto px-8 flex flex-col justify-end pb-36"
-        style="padding-top: 120px">
-
-        <!-- Category badge -->
-        <div class="flex items-center gap-3 mb-5">
-          <span
-            class="bg-red text-white font-body font-semibold text-[.58rem] tracking-[2px] uppercase px-3 py-1.5 rounded-full">
-            {{ lang === 'fr' ? post.catFr : post.catEn }}
-          </span>
+        <!-- Slide counter — sits below navbar -->
+        <div class="absolute right-10 z-20 text-white/30 font-display font-bold text-sm select-none"
+          style="top: calc(104px + 2rem)">
+          <span class="text-white text-2xl">{{ String(i + 1).padStart(2, '0') }}</span>
+          <span class="mx-1">/</span>
+          <span>{{ String(slides.length).padStart(2, '0') }}</span>
         </div>
 
-        <!-- Title -->
-        <h1 class="font-display font-bold text-white leading-[1.06] max-w-[820px] mb-8"
-          style="font-size:clamp(2.2rem,5vw,4.2rem)">
-          {{ lang === 'fr' ? post.titleFr : post.titleEn }}
-        </h1>
+        <!-- Slide content — anchored to bottom, never reaches navbar -->
+        <div class="relative h-full max-w-[1280px] mx-auto px-8 flex flex-col justify-end pb-36"
+          style="padding-top: 120px">
 
-        <!-- CTA buttons -->
-        <div class="flex items-center gap-3">
-          <button v-if="post.id !== 'default'" @click="goToPost(post)"
-            class="inline-flex items-center gap-3 bg-red hover:bg-red-dark text-white font-body font-semibold text-sm tracking-wide px-7 py-3.5 rounded-xl border-none cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-red-lg">
-            {{ lang === 'fr' ? "Lire l'article" : 'Read article' }}
+          <!-- Category badge -->
+          <div class="flex items-center gap-3 mb-5">
             <span
-              class="w-5 h-5 rounded-full border border-white/40 flex items-center justify-center text-[.6rem]">→</span>
-          </button>
-          <button v-else @click="goToBlog"
-            class="inline-flex items-center gap-3 bg-red hover:bg-red-dark text-white font-body font-semibold text-sm tracking-wide px-7 py-3.5 rounded-xl border-none cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-red-lg">
-            {{ lang === 'fr' ? "Voir nos actualités" : 'View our news' }}
-            <span
-              class="w-5 h-5 rounded-full border border-white/40 flex items-center justify-center text-[.6rem]">→</span>
-          </button>
-          <button @click="goToBlog"
-            class="inline-flex items-center gap-2 text-white/65 hover:text-white font-body font-medium text-sm px-6 py-3.5 rounded-xl border border-white/15 hover:border-white/40 bg-transparent cursor-pointer transition-all duration-300">
-            {{ lang === 'fr' ? 'Tous les articles' : 'Get all stories' }}
-          </button>
+              class="bg-red text-white font-body font-semibold text-[.58rem] tracking-[2px] uppercase px-3 py-1.5 rounded-full">
+              {{ lang === 'fr' ? post.catFr : post.catEn }}
+            </span>
+          </div>
+
+          <!-- Title -->
+          <h1 class="font-display font-bold text-white leading-[1.06] max-w-[820px] mb-8"
+            style="font-size:clamp(2.2rem,5vw,4.2rem)">
+            {{ lang === 'fr' ? post.titleFr : post.titleEn }}
+          </h1>
+
+          <!-- CTA buttons -->
+          <div class="flex items-center gap-3">
+            <button v-if="post.id !== 'default'" @click="goToPost(post)"
+              class="inline-flex items-center gap-3 bg-red hover:bg-red-dark text-white font-body font-semibold text-sm tracking-wide px-7 py-3.5 rounded-xl border-none cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-red-lg">
+              {{ lang === 'fr' ? "Lire l'article" : 'Read article' }}
+              <span
+                class="w-5 h-5 rounded-full border border-white/40 flex items-center justify-center text-[.6rem]">→</span>
+            </button>
+            <button v-else @click="goToBlog"
+              class="inline-flex items-center gap-3 bg-red hover:bg-red-dark text-white font-body font-semibold text-sm tracking-wide px-7 py-3.5 rounded-xl border-none cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-red-lg">
+              {{ lang === 'fr' ? "Voir nos actualités" : 'View our news' }}
+              <span
+                class="w-5 h-5 rounded-full border border-white/40 flex items-center justify-center text-[.6rem]">→</span>
+            </button>
+            <button @click="goToBlog"
+              class="inline-flex items-center gap-2 text-white/65 hover:text-white font-body font-medium text-sm px-6 py-3.5 rounded-xl border border-white/15 hover:border-white/40 bg-transparent cursor-pointer transition-all duration-300">
+              {{ lang === 'fr' ? 'Tous les articles' : 'Get all stories' }}
+            </button>
+          </div>
         </div>
       </div>
-    </div>
     </div>
 
     <!-- Prev / Next + dots -->
